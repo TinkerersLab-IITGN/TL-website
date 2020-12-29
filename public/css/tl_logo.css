@@ -1,0 +1,83 @@
+#logo path:nth-child(1) {
+ stroke-dasharray: 172;
+ stroke-dashoffset: 172;
+ animation: line-anim 2s ease forwards;
+}
+
+#logo path:nth-child(2) {
+ stroke-dasharray: 109;
+ stroke-dashoffset: 109;
+ animation: line-anim 2s ease forwards 0.2s;
+}
+
+#logo path:nth-child(3) {
+ stroke-dasharray: 287;
+ stroke-dashoffset: 287;
+ animation: line-anim 2s ease forwards 0.4s;
+}
+
+#logo path:nth-child(4) {
+ stroke-dasharray: 250;
+ stroke-dashoffset: 250;
+ animation: line-anim 2s ease forwards 0.6s;
+}
+
+#logo path:nth-child(5) {
+ stroke-dasharray: 246;
+ stroke-dashoffset: 246;
+ animation: line-anim 2s ease forwards 0.8s;
+}
+
+#logo path:nth-child(6) {
+ stroke-dasharray: 282;
+ stroke-dashoffset: 282;
+ animation: line-anim 2s ease forwards 1.0s;
+}
+
+#logo path:nth-child(7) {
+ stroke-dasharray: 246;
+ stroke-dashoffset: 246;
+ animation: line-anim 2s ease forwards 1.2s;
+}
+
+#logo path:nth-child(8) {
+ stroke-dasharray: 282;
+ stroke-dashoffset: 282;
+ animation: line-anim 2s ease forwards 1.4s;
+}
+
+#logo path:nth-child(9) {
+ stroke-dasharray: 242;
+ stroke-dashoffset: 242;
+ animation: line-anim 2s ease forwards 1.6s;
+}
+
+#logo path:nth-child(10) {
+ stroke-dasharray: 51;
+ stroke-dashoffset: 51;
+ animation: line-anim 2s ease forwards 1.8s;
+}
+
+#logo path:nth-child(11) {
+ stroke-dasharray: 156;
+ stroke-dashoffset: 156;
+ animation: line-anim 2s ease forwards 2.0s;
+}
+
+#logo path:nth-child(12) {
+ stroke-dasharray: 230;
+ stroke-dashoffset: 230;
+ animation: line-anim 2s ease forwards 2.2s;
+}
+
+#logo path:nth-child(13) {
+ stroke-dasharray: 303;
+ stroke-dashoffset: 303;
+ animation: line-anim 2s ease forwards 2.4s;
+}
+
+@keyframes line-anim {
+ to {
+   stroke-dashoffset: 0;
+ }
+}
