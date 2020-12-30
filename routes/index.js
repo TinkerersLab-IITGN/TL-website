@@ -19,6 +19,20 @@ router.get("/booking", function (req, res) {
 
 })
 
+router.get("/mehtaLaser_form", function (req, res) {
+
+  if (req.user) {
+    // console.log("Logged in");
+    // console.log(req.user.emails[0].value);
+    res.render("booking_forms/mehtaLaser_form", {loggedIn: true, email: req.user.emails[0].value});
+  } else {
+    // console.log("Not logged in");
+    res.render("booking_forms/mehtaLaser_form", {loggedIn: false});
+  }
+
+})
+
+
 router.get("/events", function (req, res) {
   res.render("events");
 })

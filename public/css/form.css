@@ -1,0 +1,163 @@
+.sign-in {
+  background-color: rgba(104, 109, 224, 0.8);
+  padding: 2%;
+  margin: 5%;
+  margin-left: 15%;
+  margin-right: 15%;
+  border-radius: 30px;
+}
+
+@media only screen and (max-width:777px) {
+  .sign-in {
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+}
+
+.sign-in-text {
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: white;
+  margin-bottom: 0;
+}
+
+.sign-in-btn {
+  border-radius: 20px;
+  margin-bottom: 2%;
+}
+
+.manual-link {
+  color: white;
+  text-decoration: underline;
+}
+
+.form {
+  background-color: rgba(163, 221, 203, 0.5);
+  margin: 10%;
+  padding: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  border-radius: 20px;
+}
+
+@media only screen and (max-width:777px) {
+  .form {
+    padding: 5%;
+  }
+}
+
+.part-1 {
+  display: block;
+}
+
+.part-2-project, .part-2-course, .part-2-event, .part-2-other, .part-3-project{
+  display: none;
+}
+
+.next-btn {
+  border-radius: 20px;
+  margin: 2%;
+  margin-bottom: 0;
+}
+
+/* Contact-tl */
+.contact-tl {
+  display: none;
+}
+
+/* Loading */
+#loading {
+  display: none;
+}
+
+.spinner {
+  margin: 100px auto 0;
+  width: 70px;
+  text-align: center;
+}
+
+.spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: rgba(104, 109, 224, 1);
+
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 40% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+}
+
+/* Snackbar */
+
+#snackbar_ {
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  border-radius: 10px;
+  z-index: 9;
+  margin-left: 50%;
+  bottom: 30px;
+  transform: translate(-50%, 0);
+  font-size: 17px;
+}
+
+#snackbar_.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+#loader_ {
+  text-align: center;
+  display: none;
+}
+
+.loader-wheel_ {
+  animation: spin 1s infinite linear;
+  border: 2px solid rgba(30, 30, 30, 0.5);
+  border-left: 4px solid #fff;
+  border-radius: 50%;
+  height: 40px;
+  margin-top: 2%;
+  width: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
