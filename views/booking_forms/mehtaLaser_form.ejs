@@ -413,7 +413,7 @@
       return new Date(year, month, day, hour, minute, second);
     };
 
-    function timeString (time) {
+    function timeString(time) {
       return (time.split('T')[0] + " " + time.split('T')[1] + ":00");
     }
 
@@ -486,6 +486,7 @@
       files_project = $("#files_project").val();
 
       var getFile = document.getElementById("files_project");
+      var len = getFile.files.length;
 
       if (priority_project === null || start_time_project === null || end_time_project === null || files_project === null) {
         error_show("Please fill all the fields!");
@@ -498,53 +499,93 @@
         document.getElementById("loading").style.display = "block";
 
         let filesList = [];
+        let filesName = [];
+        let filesType = [];
 
         function writeFiles(file, i) {
           var fr = new FileReader();
           fr.readAsArrayBuffer(file);
 
           fr.onload = f => {
-            filesList.push([file.name, file.type, JSON.stringify([...new Int8Array(f.target.result)])]);
+            filesList.push([...new Int8Array(f.target.result)]);
+            filesName.push(file.name);
+            filesType.push(file.type);
 
-            if (i = getFile.files.length - 1) {
-              console.log(filesList.length);
-              var jqxhr = $.ajax({
-                url: 'https://script.google.com/macros/s/AKfycbyZrCUTa27qyd0F2YttUkeIaSkLX1XmOfNR-uhVLwoltJ7Mi0N8WnNLTw/exec',
-                method: "GET",
-                dataType: "json",
-                data: {
-                  SignedIn_Email: signedIn_email,
-                  Purpose: "Project Work",
-                  Name: name_project,
-                  Email: email_project,
-                  Roll_No: roll_no_project,
-                  Contact: contact_no_project,
-                  Used_Before: used_before_project,
-                  Attended_Workshop: attended_workshop_project,
-                  Priority: priority_project,
-                  Start_Time: start_time_project,
-                  End_Time: end_time_project,
-                  Files: JSON.stringify({
-                    "filesList": filesList
-                  })
-                }
-              }).then(function(doRef) {
-                console.log(doRef);
-                document.getElementById("loading").style.display = "none";
-
-                if (doRef["result"] === "success") {
-                  if (doRef["row"] === "clash") {
-                    document.getElementById("part-3-project").style.display = "block";
-                    error_show("This time is already boooked by someone! Please select another slot!")
-                  } else {
-                    document.getElementById("part-1").style.display = "block";
-                    error_show("Your request for Laser Cutter booking is sent! Please check your mailbox!");
-                  }
-                } else {
-                  document.getElementById("part-3-project").style.display = "block";
-                  error_show("Sorry some error occured. Please try again later!");
-                }
+            if (filesList.length == len) {
+              const purl = "https://cors-anywhere.herokuapp.com/";
+              const url = "https://script.google.com/macros/s/AKfycbyZrCUTa27qyd0F2YttUkeIaSkLX1XmOfNR-uhVLwoltJ7Mi0N8WnNLTw/exec";
+              const combine = purl + url;
+              const qs = new URLSearchParams({
+                SignedIn_Email: signedIn_email,
+                Purpose: "Project Work",
+                Name: name_project,
+                Email: email_project,
+                Roll_No: roll_no_project,
+                Contact: contact_no_project,
+                Used_Before: used_before_project,
+                Attended_Workshop: attended_workshop_project,
+                Priority: priority_project,
+                Start_Time: start_time_project,
+                End_Time: end_time_project,
+                filesName: filesName,
+                filesType: filesType
               });
+              console.log(i);
+              files = JSON.stringify({
+                'filesList': filesList,
+                'filesName': filesName,
+                'filesType': filesType
+              });
+              // console.log(JSON.parse(filesList)['filesList']);
+              //console.log(JSON.stringify([...new Int8Array(f.target.result)]));
+              fetch(`${url}?${qs}`, {
+                  contentType: 'application/json; charset=utf-8',
+                  dataType: 'json',
+                  method: 'POST',
+                  body: files
+                })
+                //   .then(res => res.json())
+                //   .then(e => console.log(e)) // <--- You can retrieve the returned value here.
+                //   .catch(err => console.log(err));
+                // var jqxhr = $.ajax({
+                //   url: `${combine}?${qs}`,
+                //   method: "POST",
+                //   dataType: "json",
+                //data: {
+                // SignedIn_Email: signedIn_email,
+                // Purpose: "Project Work",
+                // Name: name_project,
+                // Email: email_project,
+                // Roll_No: roll_no_project,
+                // Contact: contact_no_project,
+                // Used_Before: used_before_project,
+                // Attended_Workshop: attended_workshop_project,
+                // Priority: priority_project,
+                // Start_Time: start_time_project,
+                // End_Time: end_time_project,
+                // Files: JSON.stringify({
+                //   "filesList": filesList
+                // })
+                //}
+                //data: JSON.stringify([...new Int8Array(f.target.result)])
+                //})
+                .then(function(doRef) {
+                  console.log(doRef);
+                  document.getElementById("loading").style.display = "none";
+
+                  if (doRef["result"] === "success") {
+                    if (doRef["row"] === "clash") {
+                      document.getElementById("part-3-project").style.display = "block";
+                      error_show("This time is already boooked by someone! Please select another slot!")
+                    } else {
+                      document.getElementById("part-1").style.display = "block";
+                      error_show("Your request for Laser Cutter booking is sent! Please check your mailbox!");
+                    }
+                  } else {
+                    document.getElementById("part-3-project").style.display = "block";
+                    error_show("Sorry some error occured. Please try again later!");
+                  }
+                });
             }
           }
         }
