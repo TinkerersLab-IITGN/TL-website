@@ -50,7 +50,7 @@
   display: block;
 }
 
-.part-2-project, .part-2-course, .part-2-event, .part-2-other, .part-3-project{
+.part-2-project, .part-2-course, .part-2-event, .part-2-other, .part-3-project, .part-3-other{
   display: none;
 }
 
