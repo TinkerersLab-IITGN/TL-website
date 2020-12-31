@@ -417,6 +417,20 @@
       return (time.split('T')[0] + " " + time.split('T')[1] + ":00");
     }
 
+    function getTimeStringToSend (time) {
+      var list = time.split("T");
+      var date = list[0];
+      var hour_minute = list[1];
+      var day = date.split("-")[2];
+      var month = date.split("-")[1];
+      var year = date.split("-")[0];
+      var hour = hour_minute.split(":")[0];
+      var minute = hour_minute.split(":")[1];
+      var seconds = "00";
+
+      return day + "/" + month + "/" + year + " " + hour + ":" + minute + ":" + seconds;
+    }
+
     let currentTime = new Date(Date.now());
     let maxTime = new Date(Date.now());
     let tenMinuteAhead = new Date(Date.now());
@@ -483,6 +497,12 @@
       end_time_project = $("#end_time_project").val();
       files_project = $("#files_project").val();
 
+      var start_time_project_dateFormat = timeString(start_time_project).toDate("yyyy-mm-dd hh:ii:ss");
+      var s_t = getTimeStringToSend(start_time_project);
+
+      var end_time_project_dateFormat = timeString(end_time_project).toDate("yyyy-mm-dd hh:ii:ss");
+      var e_t = getTimeStringToSend(end_time_project);
+
       var getFile = document.getElementById("files_project");
       var len = getFile.files.length;
 
@@ -490,7 +510,7 @@
         error_show("Please fill all the fields!");
       } else if (priority_project.trim() === "" || start_time_project.trim() === "" || end_time_project.trim() === "" || getFile.files.length === 0) {
         error_show("Please fill all the fields!");
-      } else if (timeString(start_time_project).toDate("yyyy-mm-dd hh:ii:ss") >= timeString(end_time_project).toDate("yyyy-mm-dd hh:ii:ss")) {
+      } else if (start_time_project_dateFormat >= end_time_project_dateFormat) {
         error_show("Please fill valid time!");
       } else {
         document.getElementById("part-3-project").style.display = "none";
@@ -523,8 +543,8 @@
                 Used_Before: used_before_project,
                 Attended_Workshop: attended_workshop_project,
                 Priority: priority_project,
-                Start_Time: start_time_project,
-                End_Time: end_time_project,
+                Start_Time: s_t,
+                End_Time: e_t,
                 filesName: filesName,
                 filesType: filesType
               });
