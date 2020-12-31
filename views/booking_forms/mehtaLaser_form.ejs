@@ -424,11 +424,9 @@
     maxTime.setDate(maxTime.getDate() + 7);
     tenMinuteAhead.setMinutes(tenMinuteAhead.getMinutes() + 10);
 
-    // document.getElementById("start_time_project").value = convertToLocalDate(currentTime);
     document.getElementById("start_time_project").min = convertToLocalDate(currentTime);
     document.getElementById("start_time_project").max = convertToLocalDate(maxTime);
 
-    // document.getElementById("end_time_project").value = convertToLocalDate(tenMinuteAhead);
     document.getElementById("end_time_project").min = convertToLocalDate(tenMinuteAhead);
     document.getElementById("end_time_project").max = convertToLocalDate(maxTime);
 
@@ -512,9 +510,9 @@
             filesType.push(file.type);
 
             if (filesList.length == len) {
-              const purl = "https://cors-anywhere.herokuapp.com/";
-              const url = "https://script.google.com/macros/s/AKfycbyZrCUTa27qyd0F2YttUkeIaSkLX1XmOfNR-uhVLwoltJ7Mi0N8WnNLTw/exec";
-              const combine = purl + url;
+              //const purl = "https://cors-anywhere.herokuapp.com/"; // (Uncomment for CORS error)
+              const url = "https://script.google.com/macros/s/AKfycbxtH6G8428MxlvnGOKmS0HM2Zkm3SktuI-vrh-khTo58cVJxAlUD6cC_Q/exec";
+              //const combine = purl + url; // (Uncomment for CORS error)
               const qs = new URLSearchParams({
                 SignedIn_Email: signedIn_email,
                 Purpose: "Project Work",
@@ -536,56 +534,44 @@
                 'filesName': filesName,
                 'filesType': filesType
               });
-              // console.log(JSON.parse(filesList)['filesList']);
-              //console.log(JSON.stringify([...new Int8Array(f.target.result)]));
-              fetch(`${url}?${qs}`, {
+
+              fetch(`${url}?${qs}`, { //(Replace url with combine for CORS error)
                   contentType: 'application/json; charset=utf-8',
                   dataType: 'json',
                   method: 'POST',
                   body: files
                 })
-                //   .then(res => res.json())
-                //   .then(e => console.log(e)) // <--- You can retrieve the returned value here.
-                //   .catch(err => console.log(err));
-                // var jqxhr = $.ajax({
-                //   url: `${combine}?${qs}`,
-                //   method: "POST",
-                //   dataType: "json",
-                //data: {
-                // SignedIn_Email: signedIn_email,
-                // Purpose: "Project Work",
-                // Name: name_project,
-                // Email: email_project,
-                // Roll_No: roll_no_project,
-                // Contact: contact_no_project,
-                // Used_Before: used_before_project,
-                // Attended_Workshop: attended_workshop_project,
-                // Priority: priority_project,
-                // Start_Time: start_time_project,
-                // End_Time: end_time_project,
-                // Files: JSON.stringify({
-                //   "filesList": filesList
-                // })
-                //}
-                //data: JSON.stringify([...new Int8Array(f.target.result)])
-                //})
-                .then(function(doRef) {
-                  console.log(doRef);
-                  document.getElementById("loading").style.display = "none";
-
-                  if (doRef["result"] === "success") {
-                    if (doRef["row"] === "clash") {
+                .then(res => res.json())
+                .then(function (e) {
+                  console.log(e);
+                  if (e.result == "success") {
+                    if (e.row == "clash") {
+                      error_show("This time is already booked by someone please choose another time slot!");
+                      document.getElementById("loading").style.display = "none";
                       document.getElementById("part-3-project").style.display = "block";
-                      error_show("This time is already boooked by someone! Please select another slot!")
                     } else {
+                      error_show("Your request has been sent please check your Mail Box!");
+                      document.getElementById("loading").style.display = "none";
                       document.getElementById("part-1").style.display = "block";
-                      error_show("Your request for Laser Cutter booking is sent! Please check your mailbox!");
+                      $("#purpose").val('');
+                      $("#name_project").val('');
+                      $("#email_project").val('');
+                      $("#roll_no_project").val('');
+                      $("#contact_number_project").val('');
+                      $("#used_before_project").val('');
+                      $("#attended_workshop_project").val('');
+                      $("#priority_project").val('');
+                      $("#start_time_project").val('');
+                      $("#end_time_project").val('');
+                      $("#files_project").val('');
                     }
                   } else {
+                    error_show("Some error occured! Please try again later!");
+                    document.getElementById("loading").style.display = "none";
                     document.getElementById("part-3-project").style.display = "block";
-                    error_show("Sorry some error occured. Please try again later!");
                   }
-                });
+                })
+                .catch(err => console.log(err));
             }
           }
         }
