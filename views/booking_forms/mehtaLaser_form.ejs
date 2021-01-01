@@ -193,15 +193,25 @@
       </div>
 
       <div class="form-row">
-        <div class="form-group col-md-6"> <label> Designation* </label> <input name="Designation_event" id="Designation_event" class="form-control" placeholder="Designation"> </div>
+        <div class="form-group col-md-6"> <label> Designation* </label> <input name="designation_event" id="designation_event" class="form-control" placeholder="Designation"> </div>
         <div class="form-group col-md-6"> <label> Contact Number* </label> <input type="text" name="contact_number_event" id="contact_number_event" class="form-control" placeholder="Contact Number" pattern="[0-9]{10}" required> </div>
       </div>
 
-      <div class="form-group"> <label> Schedule for using the machine (or Approximate time required)* </label> <textarea id="schedule_event" maxlength="1000" name="schedule_event" class="form-control "
-          placeholder="Ex: 20th, 21st January 6:00 to 10:00 pm" style="height:100px !important;max-height:100px !important;min-height:100px !important;" required></textarea></div>
+      <div class="form-group"> <label for="used_before_event"> Did you use the Laser Machine earlier for any work? * </label> <select name="used_before_event" id="used_before_event" class="form-control" required>
+          <option value="" disabled selected style="display: none">--Please select an option--</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select> </div>
+      <div class="form-group"> <label for="attended_workshop_event"> Have you attended any workshop conducted on the use of machines in TL?* </label> <select name="attended_workshop_event" id="attended_workshop_event" class="form-control"
+          required>
+          <option value="" disabled selected style="display: none">--Please select an option--</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select> </div>
+
 
       <div class="text-center">
-        <button type="button" class="btn btn-outline-dark next-btn" onclick="submit_event()">Submit</button>
+        <button type="button" class="btn btn-outline-dark next-btn" onclick="next2_event()">Next &rarr;</button>
       </div>
     </div>
 
@@ -268,6 +278,36 @@
         <button type="button" class="btn btn-outline-dark next-btn" onclick="submit_project()">Submit</button>
       </div>
     </div>
+
+    <!-- Event -->
+    <div class="part-3-event" id="part-3-event">
+      <div class="form-group"> <label for="priority_event"> Priority * </label> <select name="priority_event" id="priority_event" class="form-control" required>
+          <option value="" disabled selected style="display: none">--Please select an option--</option>
+          <option>Very High</option>
+          <option>High</option>
+          <option>Normal</option>
+          <option>Low</option>
+          <option>Very Low</option>
+        </select> </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6"><label for="start_time_event">Start Time</label><br>
+          <input type="datetime-local" id="start_time_event" name="start_time_event" value="" min="" max="">
+        </div>
+        <div class="form-group col-md-6"><label for="end_time_event">End Time</label><br>
+          <input type="datetime-local" id="end_time_event" name="end_time_event" value="" min="" max="">
+        </div>
+      </div>
+
+      <div class="form-group"><label for="files_event">Attach Files</label>
+        <input type="file" name="files_event" id="files_event" multiple="multiple" accept=".dxf, application/dxf, image/*" />
+      </div>
+
+      <div class="text-center">
+        <button type="button" class="btn btn-outline-dark next-btn" onclick="submit_event()">Submit</button>
+      </div>
+    </div>
+
 
     <!-- Others -->
     <div class="part-3-other" id="part-3-other">
@@ -386,7 +426,8 @@
     var email_event;
     var designation_event;
     var contact_no_event;
-    var schedule_event;
+    var used_before_event;
+    var attended_workshop_event;
 
     var purpose_other;
     var name_other;
@@ -400,6 +441,11 @@
     var start_time_project;
     var end_time_project;
     var files_project;
+
+    var priority_event;
+    var start_time_event;
+    var end_time_event;
+    var files_event;
 
     var priority_other;
     var start_time_other;
@@ -476,15 +522,27 @@
 
     document.getElementById("start_time_project").min = convertToLocalDate(currentTime);
     document.getElementById("start_time_project").max = convertToLocalDate(maxTime);
+    document.getElementById("start_time_project").value = convertToLocalDate(currentTime);
 
     document.getElementById("end_time_project").min = convertToLocalDate(tenMinuteAhead);
     document.getElementById("end_time_project").max = convertToLocalDate(maxTime);
+    document.getElementById("end_time_project").value = convertToLocalDate(tenMinuteAhead);
+
+    document.getElementById("start_time_event").min = convertToLocalDate(currentTime);
+    document.getElementById("start_time_event").max = convertToLocalDate(maxTime);
+    document.getElementById("start_time_event").value = convertToLocalDate(currentTime);
+
+    document.getElementById("end_time_event").min = convertToLocalDate(tenMinuteAhead);
+    document.getElementById("end_time_event").max = convertToLocalDate(maxTime);
+    document.getElementById("end_time_event").value = convertToLocalDate(tenMinuteAhead);
 
     document.getElementById("start_time_other").min = convertToLocalDate(currentTime);
     document.getElementById("start_time_other").max = convertToLocalDate(maxTime);
+    document.getElementById("start_time_other").value = convertToLocalDate(currentTime);
 
     document.getElementById("end_time_other").min = convertToLocalDate(tenMinuteAhead);
     document.getElementById("end_time_other").max = convertToLocalDate(maxTime);
+    document.getElementById("end_time_other").value = convertToLocalDate(tenMinuteAhead);
 
 
     function next1() {
@@ -667,24 +725,144 @@
       }
     }
 
-    function submit_event() {
+    function next2_event() {
       event_name_event = $("#event_name_event").val();
       name_event = $("#name_event").val();
       email_event = $("#email_event").val();
       designation_event = $("#designation_event").val();
-      contact_no_event = $("#contact_no_event").val();
-      schedule_event = $("#schedule_event").val();
+      contact_no_event = $("#contact_number_event").val();
+      used_before_event = $("#used_before_event").val();
+      attended_workshop_event = $("#attended_workshop_event").val();
 
-      if (event_name_event === null || name_event === null || email_event === null || designation_event === null || contact_no_event === null || schedule_event === null) {
+      if (event_name_event === null || name_event === null || email_event === null || designation_event === null || contact_no_event === null || used_before_event === null || attended_workshop_event === null) {
         error_show("Please fill all the fields!");
-      } else if (event_name_event.trim() === "" || name_event.trim() === "" || email_event.trim() === "" || designation_event.trim() === "" || contact_no_event.trim() === "" || schedule_event.trim() === "") {
+      } else if (event_name_event.trim() === "" || name_event.trim() === "" || email_event.trim() === "" || designation_event.trim() === "" || contact_no_event.trim() === "" || used_before_event.trim() === "" || attended_workshop_event.trim() === "") {
         error_show("Please fill all the fields!");
       } else if (parseInt(contact_no_event) > 9999999999) {
         error_show("Please fill valid contact number!");
       } else {
         document.getElementById("part-2-event").style.display = "none";
+
+        //TODO: Implement self previously used from database
+        if (used_before_event.toString().toLowerCase() === "no" && attended_workshop_event.toString().toLowerCase() === "no") {
+          document.getElementById("contact-tl").style.display = "block";
+        } else {
+          document.getElementById("part-3-event").style.display = "block";
+        }
+
+      }
+    }
+
+    function submit_event() {
+      priority_event = $("#priority_event").val();
+      start_time_event = $("#start_time_event").val();
+      end_time_event = $("#end_time_event").val();
+      files_event = $("#files_event").val();
+
+      var start_time_event_dateFormat = timeString(start_time_event).toDate("yyyy-mm-dd hh:ii:ss");
+      var s_t = getTimeStringToSend(start_time_event);
+
+      var end_time_event_dateFormat = timeString(end_time_event).toDate("yyyy-mm-dd hh:ii:ss");
+      var e_t = getTimeStringToSend(end_time_event);
+
+      var getFile = document.getElementById("files_event");
+      var len = getFile.files.length;
+
+      if (priority_event === null || start_time_event === null || end_time_event === null || files_event === null) {
+        error_show("Please fill all the fields!");
+      } else if (priority_event.trim() === "" || start_time_event.trim() === "" || end_time_event.trim() === "" || getFile.files.length === 0) {
+        error_show("Please fill all the fields!");
+      } else if (start_time_event_dateFormat >= end_time_event_dateFormat) {
+        error_show("Please fill valid time!");
+      } else {
+        document.getElementById("part-3-event").style.display = "none";
         document.getElementById("loading").style.display = "block";
 
+        let filesList = [];
+        let filesName = [];
+        let filesType = [];
+
+        function writeFiles(file, i) {
+          var fr = new FileReader();
+          fr.readAsArrayBuffer(file);
+
+          fr.onload = f => {
+            filesList.push([...new Int8Array(f.target.result)]);
+            filesName.push(file.name);
+            filesType.push(file.type);
+
+            if (filesList.length == len) {
+              //const purl = "https://cors-anywhere.herokuapp.com/"; // (Uncomment for CORS error)
+              const url = "https://script.google.com/macros/s/AKfycbxtH6G8428MxlvnGOKmS0HM2Zkm3SktuI-vrh-khTo58cVJxAlUD6cC_Q/exec";
+              //const combine = purl + url; // (Uncomment for CORS error)
+              const qs = new URLSearchParams({
+                SignedIn_Email: signedIn_email,
+                Purpose: "Event Work",
+                Event_Name: event_name_event,
+                Name: name_event,
+                Email: email_event,
+                Designation: designation_event,
+                Contact: contact_no_event,
+                Used_Before: used_before_event,
+                Attended_Workshop: attended_workshop_event,
+                Priority: priority_event,
+                Start_Time: s_t,
+                End_Time: e_t,
+                filesName: filesName,
+                filesType: filesType
+              });
+              console.log(i);
+              files = JSON.stringify({
+                'filesList': filesList,
+                'filesName': filesName,
+                'filesType': filesType
+              });
+
+              fetch(`${url}?${qs}`, { //(Replace url with combine for CORS error)
+                  contentType: 'application/json; charset=utf-8',
+                  dataType: 'json',
+                  method: 'POST',
+                  body: files
+                })
+                .then(res => res.json())
+                .then(function (e) {
+                  console.log(e);
+                  if (e.result == "success") {
+                    if (e.row == "clash") {
+                      error_show("This time is already booked by someone please choose another time slot!");
+                      document.getElementById("loading").style.display = "none";
+                      document.getElementById("part-3-event").style.display = "block";
+                    } else {
+                      error_show("Your request has been sent please check your Mail Box!");
+                      document.getElementById("loading").style.display = "none";
+                      document.getElementById("part-1").style.display = "block";
+                      $("#purpose").val('');
+                      $("#event_name_event").val('');
+                      $("#name_event").val('');
+                      $("#email_event").val('');
+                      $("#designation_event").val('');
+                      $("#contact_number_event").val('');
+                      $("#used_before_event").val('');
+                      $("#attended_workshop_event").val('');
+                      $("#priority_event").val('');
+                      $("#start_time_event").val('');
+                      $("#end_time_event").val('');
+                      $("#files_event").val('');
+                    }
+                  } else {
+                    error_show("Some error occured! Please try again later!");
+                    document.getElementById("loading").style.display = "none";
+                    document.getElementById("part-3-event").style.display = "block";
+                  }
+                })
+                .catch(err => console.log(err));
+            }
+          }
+        }
+
+        for (var i = 0; i < getFile.files.length; i++) {
+          writeFiles(getFile.files[i], i);
+        }
       }
     }
 
