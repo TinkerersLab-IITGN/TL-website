@@ -162,7 +162,7 @@
       </div>
 
       <div class="form-row">
-        <div class="form-group col-md-6"> <label> Designation* </label> <input name="Designation_course" id="Designation_course" class="form-control" placeholder="Designation"> </div>
+        <div class="form-group col-md-6"> <label> Designation* </label> <input name="designation_course" id="designation_course" class="form-control" placeholder="Designation"> </div>
         <div class="form-group col-md-6"> <label> Contact Number* </label> <input type="text" name="contact_number_course" id="contact_number_course" class="form-control" placeholder="Contact Number" pattern="[0-9]{10}" required> </div>
       </div>
 
@@ -173,8 +173,91 @@
         <div class="form-group col-md-6"> <label> Course Instructor* </label> <input name="course_instructor_course" id="course_instructor_course" type="text" class="form-control" placeholder="Course Instructor" required> </div>
       </div>
 
-      <div class="form-group"> <label> Schedule for using the machine* </label> <textarea id="schedule_course" maxlength="1000" name="schedule_course" class="form-control " placeholder="Ex: Monday, Wednesday, Friday - 2:00 PM to 5:00 PM"
-          style="height:100px !important;max-height:100px !important;min-height:100px !important;" required></textarea></div>
+      <br>
+      <div class="form-row">
+        <div class="form-group col-md-6"><label for="start_date_course">Start Date</label>
+          <input type="date" id="start_date_course" name="start_date_course" value="" min="" max="">
+        </div>
+        <div class="form-group col-md-6"><label for="end_date_course">End Date</label>
+          <input type="date" id="end_date_course" name="end_date_course" value="" min="" max="">
+        </div>
+      </div>
+
+      <br>
+      <div class="form-row">
+        <div class="form-group col-sm-12 col-md-4 col-lg-4">
+          <input type="checkbox" id="monday_course" name="monday_course">
+          <label for="monday_course">  Monday</label>
+        </div>
+        <div class="form-group col-sm-12 col-md-4 col-lg-4">
+          <label for="monday_start_time_course">Start Time</label>
+          <input type="time" id="monday_start_time_course" name="monday_start_time_course" value="" min="" max="">
+        </div>
+        <div class="form-group col-sm-12 col-md-4 col-lg-4">
+          <label for="monday_end_time_course">End Time</label>
+          <input type="time" id="monday_end_time_course" name="monday_end_time_course" value="" min="" max="">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-sm-12 col-md-4 col-lg-4">
+          <input type="checkbox" id="tuesday_course" name="tuesday_course">
+          <label for="tuesday_course">  Tuesday</label>
+        </div>
+        <div class="form-group col-sm-12 col-md-4 col-lg-4">
+          <label for="tuesday_start_time_course">Start Time</label>
+          <input type="time" id="tuesday_start_time_course" name="tuesday_start_time_course" value="" min="" max="">
+        </div>
+        <div class="form-group col-sm-12 col-md-4 col-lg-4">
+          <label for="tuesday_end_time_course">End Time</label>
+          <input type="time" id="tuesday_end_time_course" name="tuesday_end_time_course" value="" min="" max="">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-sm-12 col-md-4 col-lg-4">
+          <input type="checkbox" id="wednesday_course" name="wednesday_course">
+          <label for="wednesday_course">  Wednesday</label>
+        </div>
+        <div class="form-group col-sm-12 col-md-4 col-lg-4">
+          <label for="wednesday_start_time_course">Start Time</label>
+          <input type="time" id="wednesday_start_time_course" name="wednesday_start_time_course" value="" min="" max="">
+        </div>
+        <div class="form-group col-sm-12 col-md-4 col-lg-4">
+          <label for="wednesday_end_time_course">End Time</label>
+          <input type="time" id="wednesday_end_time_course" name="wednesday_end_time_course" value="" min="" max="">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-sm-12 col-md-4 col-lg-4">
+          <input type="checkbox" id="thursday_course" name="thursday_course">
+          <label for="thursday_course">  Thursday</label>
+        </div>
+        <div class="form-group col-sm-12 col-md-4 col-lg-4">
+          <label for="thursday_start_time_course">Start Time</label>
+          <input type="time" id="thursday_start_time_course" name="thursday_start_time_course" value="" min="" max="">
+        </div>
+        <div class="form-group col-sm-12 col-md-4 col-lg-4">
+          <label for="thursday_end_time_course">End Time</label>
+          <input type="time" id="thursday_end_time_course" name="thursday_end_time_course" value="" min="" max="">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-sm-12 col-md-4 col-lg-4">
+          <input type="checkbox" id="friday_course" name="friday_course">
+          <label for="friday_course">  Friday</label>
+        </div>
+        <div class="form-group col-sm-12 col-md-4 col-lg-4">
+          <label for="friday_start_time_course">Start Time</label>
+          <input type="time" id="friday_start_time_course" name="friday_start_time_course" value="" min="" max="">
+        </div>
+        <div class="form-group col-sm-12 col-md-4 col-lg-4">
+          <label for="friday_end_time_course">End Time</label>
+          <input type="time" id="friday_end_time_course" name="friday_end_time_course" value="" min="" max="">
+        </div>
+      </div>
 
       <div class="text-center">
         <button type="button" class="btn btn-outline-dark next-btn" onclick="submit_course()">Submit</button>
@@ -419,7 +502,23 @@
     var contact_no_course;
     var course_name_course;
     var course_instructor_course;
-    var schedule_course;
+    var start_date_course;
+    var end_date_course;
+    var monday_course;
+    var monday_start_time_course;
+    var monday_end_time_course;
+    var tuesday_course;
+    var tuesday_start_time_course;
+    var tuesday_end_time_course;
+    var wednesday_course;
+    var wednesday_start_time_course;
+    var wednesday_end_time_course;
+    var thursday_course;
+    var thursday_start_time_course;
+    var thursday_end_time_course;
+    var friday_course;
+    var friday_start_time_course;
+    var friday_end_time_course;
 
     var event_name_event;
     var name_event;
@@ -469,6 +568,30 @@
       return today + "T" + displayTime;
     }
 
+    function convertToDate(date) {
+      var day = date.getDate(),
+        month = date.getMonth() + 1,
+        year = date.getFullYear();
+
+      month = (month < 10 ? "0" : "") + month;
+      day = (day < 10 ? "0" : "") + day;
+
+      var today = year + "-" + month + "-" + day;
+
+      return today;
+    }
+
+    function convertToTime(date) {
+      var hour = date.getHours(),
+        min = date.getMinutes();
+
+      hour = (hour < 10 ? "0" : "") + hour;
+      min = (min < 10 ? "0" : "") + min;
+
+      var displayTime = hour + ":" + min;
+      return displayTime;
+    }
+
     String.prototype.toDate = function(format) {
       var normalized = this.replace(/[^a-zA-Z0-9]/g, '-');
       var normalizedFormat = format.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-');
@@ -513,6 +636,15 @@
       return day + "/" + month + "/" + year + " " + hour + ":" + minute + ":" + seconds;
     }
 
+    function getDateStringToSend (time) {
+      var list = time.split("-");
+      var year = list[0];
+      var month = list[1];
+      var day = list[2];
+
+      return day + "/" + month + "/" + year;
+    }
+
     let currentTime = new Date(Date.now());
     let maxTime = new Date(Date.now());
     let tenMinuteAhead = new Date(Date.now());
@@ -527,6 +659,12 @@
     document.getElementById("end_time_project").min = convertToLocalDate(tenMinuteAhead);
     document.getElementById("end_time_project").max = convertToLocalDate(maxTime);
     document.getElementById("end_time_project").value = convertToLocalDate(tenMinuteAhead);
+
+    document.getElementById("start_date_course").min = convertToDate(currentTime);
+    document.getElementById("start_date_course").value = convertToDate(currentTime);
+
+    document.getElementById("end_date_course").min = convertToDate(tenMinuteAhead);
+    document.getElementById("end_date_course").value = convertToDate(tenMinuteAhead);
 
     document.getElementById("start_time_event").min = convertToLocalDate(currentTime);
     document.getElementById("start_time_event").max = convertToLocalDate(maxTime);
@@ -706,21 +844,166 @@
       name_course = $("#name_course").val();
       email_course = $("#email_course").val();
       designation_course = $("#designation_course").val();
-      contact_no_course = $("#contact_no_course").val();
+      contact_no_course = $("#contact_number_course").val();
       course_name_course = $("#course_name_course").val();
       course_instructor_course = $("#course_instructor_course").val();
-      schedule_course = $("#schedule_course").val();
+      start_date_course = $("#start_date_course").val();
+      end_date_course = $("#end_date_course").val();
+      monday_start_time_course = $("#monday_start_time_course").val();
+      monday_end_time_course = $("#monday_end_time_course").val();
+      tuesday_start_time_course = $("#tuesday_start_time_course").val();
+      tuesday_end_time_course = $("#tuesday_end_time_course").val();
+      wednesday_start_time_course = $("#wednesday_start_time_course").val();
+      wednesday_end_time_course = $("#wednesday_end_time_course").val();
+      thursday_start_time_course = $("#thursday_start_time_course").val();
+      thursday_end_time_course = $("#thursday_end_time_course").val();
+      friday_start_time_course = $("#friday_start_time_course").val();
+      friday_end_time_course = $("#friday_end_time_course").val();
 
-      if (name_course === null || email_course === null || designation_course === null || contact_no_course === null || course_name_course === null || course_instructor_course === null || schedule_course === null) {
+      var start_date_course_dateFormat = timeString(start_date_course + "T00:00").toDate("yyyy-mm-dd hh:ii:ss");
+      var s_t = getDateStringToSend(start_date_course);
+
+      var end_date_course_dateFormat = timeString(end_date_course + "T00:00").toDate("yyyy-mm-dd hh:ii:ss");
+      var e_t = getDateStringToSend(end_date_course);
+
+      var monday = true;
+      var tuesday = true;
+      var wednesday = true;
+      var thursday = true;
+      var friday = true;
+      var date_check = (start_date_course_dateFormat < end_date_course_dateFormat);
+
+      if ($("#monday_course").is(":checked")) {
+        var monday_satrt_time_course_dateFormat = timeString("2021-01-01T" + monday_start_time_course).toDate("yyyy-mm-dd hh:ii:ss");
+        var monday_end_time_course_dateFormat = timeString("2021-01-01T" + monday_end_time_course).toDate("yyyy-mm-dd hh:ii:ss");
+
+        monday = (monday_satrt_time_course_dateFormat < monday_end_time_course_dateFormat);
+      }
+
+      if ($("#tuesday_course").is(":checked")) {
+        var tuesday_satrt_time_course_dateFormat = timeString("2021-01-01T" + tuesday_start_time_course).toDate("yyyy-mm-dd hh:ii:ss");
+        var tuesday_end_time_course_dateFormat = timeString("2021-01-01T" + tuesday_end_time_course).toDate("yyyy-mm-dd hh:ii:ss");
+
+        tuesday = (tuesday_satrt_time_course_dateFormat < tuesday_end_time_course_dateFormat);
+      }
+
+      if ($("#wednesday_course").is(":checked")) {
+        var wednesday_satrt_time_course_dateFormat = timeString("2021-01-01T" + wednesday_start_time_course).toDate("yyyy-mm-dd hh:ii:ss");
+        var wednesday_end_time_course_dateFormat = timeString("2021-01-01T" + wednesday_end_time_course).toDate("yyyy-mm-dd hh:ii:ss");
+
+        wednesday = (wednesday_satrt_time_course_dateFormat < wednesday_end_time_course_dateFormat);
+      }
+
+      if ($("#thursday_course").is(":checked")) {
+        var thursday_satrt_time_course_dateFormat = timeString("2021-01-01T" + thursday_start_time_course).toDate("yyyy-mm-dd hh:ii:ss");
+        var thursday_end_time_course_dateFormat = timeString("2021-01-01T" + thursday_end_time_course).toDate("yyyy-mm-dd hh:ii:ss");
+
+        thursday = (thursday_satrt_time_course_dateFormat < thursday_end_time_course_dateFormat);
+      }
+
+      if ($("#friday_course").is(":checked")) {
+        var friday_satrt_time_course_dateFormat = timeString("2021-01-01T" + friday_start_time_course).toDate("yyyy-mm-dd hh:ii:ss");
+        var friday_end_time_course_dateFormat = timeString("2021-01-01T" + friday_end_time_course).toDate("yyyy-mm-dd hh:ii:ss");
+
+        friday = (friday_satrt_time_course_dateFormat < friday_end_time_course_dateFormat);
+      }
+
+
+      if (name_course === null || email_course === null || designation_course === null || contact_no_course === null || course_name_course === null || course_instructor_course === null || start_date_course === null || end_date_course === null) {
         error_show("Please fill all the fields!");
-      } else if (name_course.trim() === "" || email_course.trim() === "" || designation_course.trim() === "" || contact_no_course.trim() === "" || course_name_course.trim() === "" || course_instructor_course.trim() === "" || schedule_course
-        .trim() === "") {
+      } else if (name_course.trim() === "" || email_course.trim() === "" || designation_course.trim() === "" || contact_no_course.trim() === "" || course_name_course.trim() === "" || course_instructor_course.trim() === "" || start_date_course.trim() === "" || end_date_course.trim() === "") {
         error_show("Please fill all the fields!");
       } else if (parseInt(contact_no_course) > 9999999999) {
         error_show("Please fill valid contact number!");
+      } else if (!$("#monday_course").is(":checked") && !$("#tuesday_course").is(":checked") && !$("#wednesday_course").is(":checked") && !$("#thursday_course").is(":checked") && !$("#friday_course").is(":checked")) {
+        error_show("Please select at least one weekday!");
+      } else if (($("#monday_course").is(":checked") && (monday_start_time_course === null || monday_end_time_course === null)) || ($("#tuessday_course").is(":checked") && (tuesday_start_time_course === null || tuesday_end_time_course === null)) || ($("#wednesday_course").is(":checked") && (wednesday_start_time_course === null || wednesday_end_time_course === null)) || ($("#thursday_course").is(":checked") && (thursday_start_time_course === null || thursday_end_time_course === null)) || ($("#friday_course").is(":checked") && (friday_start_time_course === null || friday_end_time_course === null))) {
+        error_show("Please select time for all the selected weekdays!");
+      } else if (!date_check || !monday || !tuesday || !wednesday || !thursday || !friday) {
+        error_show("Please select valid date and time!");
       } else {
         document.getElementById("part-2-course").style.display = "none";
         document.getElementById("loading").style.display = "block";
+
+        var details = JSON.stringify({
+          SignedIn_Email: signedIn_email,
+          Name: name_course,
+          Email: email_course,
+          Designation: designation_course,
+          Contact: contact_no_course,
+          Course_Name: course_name_course,
+          Course_Instructor: course_instructor_course,
+          Start_Date: start_date_course,
+          End_Date: end_date_course,
+          Monday: $("#monday_course").is(":checked")?"true":"false",
+          Monday_Start_Time: (monday_start_time_course === null)?"-":monday_start_time_course,
+          Monday_End_Time: (monday_end_time_course === null)?"-":monday_end_time_course,
+          Tuesday: $("#tuesday_course").is(":checked")?"true":"false",
+          Tuesday_Start_Time: (tuesday_start_time_course === null)?"-":tuesday_start_time_course,
+          Tuesday_End_Time: (tuesday_end_time_course === null)?"-":tuesday_end_time_course,
+          Wednesday: $("#wednesday_course").is(":checked")?"true":"false",
+          Wednesday_Start_Time: (wednesday_start_time_course === null)?"-":wednesday_start_time_course,
+          Wednesday_End_Time: (wednesday_end_time_course === null)?"-":wednesday_end_time_course,
+          Thursday: $("#thursday_course").is(":checked")?"true":"false",
+          Thursday_Start_Time: (thursday_start_time_course === null)?"-":thursday_start_time_course,
+          Thursday_End_Time: (thursday_end_time_course === null)?"-":thursday_end_time_course,
+          Friday: $("#friday_course").is(":checked")?"true":"false",
+          Friday_Start_Time: (friday_start_time_course === null)?"-":friday_start_time_course,
+          Friday_End_Time: (friday_end_time_course === null)?"-":friday_end_time_course
+        });
+
+        const url = "https://script.google.com/macros/s/AKfycbxtH6G8428MxlvnGOKmS0HM2Zkm3SktuI-vrh-khTo58cVJxAlUD6cC_Q/exec";
+
+        const qs = new URLSearchParams({
+          Purpose: "Course Work"
+        });
+
+        fetch(`${url}?${qs}`, { //(Replace url with combine for CORS error)
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            method: 'POST',
+            body: details
+          })
+          .then(res => res.json())
+          .then(function (e) {
+            console.log(e);
+            if (e.result == "success") {
+
+                error_show("Your request has been sent please check your Mail Box!");
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("part-1").style.display = "block";
+                $("#purpose").val('');
+                $("#name_course").val('');
+                $("#email_course").val('');
+                $("#designation_course").val('');
+                $("#contact_number_course").val('');
+                $("#course_name_course").val('');
+                $("#course_instructor_course").val('');
+                $("#start_date_course").val('');
+                $("#end_date_course").val('');
+                $("#monday_course").val('');
+                $("#monday_start_time_course").val('');
+                $("#monday_end_time_course").val('');
+                $("#tuesday_course").val('');
+                $("#tuesday_start_time_course").val('');
+                $("#tuesday_end_time_course").val('');
+                $("#wednesday_course").val('');
+                $("#wednesday_start_time_course").val('');
+                $("#wednesday_end_time_course").val('');
+                $("#thursday_course").val('');
+                $("#thursday_start_time_course").val('');
+                $("#thursday_end_time_course").val('');
+                $("#friday_course").val('');
+                $("#friday_start_time_course").val('');
+                $("#friday_end_time_course").val('');
+
+            } else {
+              error_show("Some error occured! Please try again later!");
+              document.getElementById("loading").style.display = "none";
+              document.getElementById("part-2-course").style.display = "block";
+            }
+          })
+          .catch(err => console.log(err));
 
       }
     }
