@@ -30,6 +30,7 @@ var jqxhr = $.ajax({
       var cell5Text = document.createTextNode("Link");
       cell5Link.appendChild(cell5Text);
       cell5Link.href = items[i][4];
+      cell5Link.target = "blank_";
       cell1.appendChild(cell1Text);
       cell2.appendChild(cell2Img);
       cell3.appendChild(cell3Text);

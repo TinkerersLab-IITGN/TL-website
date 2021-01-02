@@ -1,5 +1,6 @@
 .inv_tab {
   padding: 10%;
+  display: inline-table;
 }
 
 .inv_tab thead {

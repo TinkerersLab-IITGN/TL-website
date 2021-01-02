@@ -30,6 +30,7 @@ h2, h3, h4, h5, h6 {
 /*Scrollbar Handle */
 ::-webkit-scrollbar {
   width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track-piece {
