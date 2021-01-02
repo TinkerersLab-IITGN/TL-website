@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>IOnventory</title>
+  <title>Inventory</title>
   <meta name="author" content="Gaurav Viramgami | Kritika Kumawat">
   <meta name="description" value="Tinkerers' Lab is a platform for students to experience innovation and prepare themselves for the future through self-learning.">
   <link rel="icon" href="\images\TL_logo.png">
@@ -69,9 +69,15 @@
       </div>
     </div>
 
+    <div class="spinner" id="loading">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+
 
   <!--table -->
-  <div class="inv_tab">
+  <div class="inv_tab" id="main">
   <table class="table table-bordered">
   <thead>
     <tr>
@@ -82,8 +88,8 @@
       <th scope="col">DATASHEET</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
+  <tbody id="tbody">
+    <!-- <tr>
       <th scope="row">Arduino</th>
       <td>
         <img class="item_img" src="/images/Photos/arduino.jpg" alt="Arduino">
@@ -105,7 +111,7 @@
       <td>@twitter</td>
       <td>Bla</td>
       <td>Bla</td>
-    </tr>
+    </tr> -->
   </tbody>
 </table>
 </div>
@@ -165,6 +171,7 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="/js/inventory.js" charset="utf-8"></script>
 
 </body>
 
