@@ -178,12 +178,15 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.63);
 }
 
-.card-img-block {
-  width: 60%;
-}
-
 .profile-card {
   padding: 2%;
+}
+
+@media only screen and (max-width:777px) {
+  .profile-card {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
 }
 
 .profile-card h5 {
