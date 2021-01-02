@@ -32,6 +32,45 @@ router.get("/mehtaLaser_form", function (req, res) {
 
 })
 
+router.get("/gccLaser_form", function (req, res) {
+
+  if (req.user) {
+    // console.log("Logged in");
+    // console.log(req.user.emails[0].value);
+    res.render("booking_forms/gccLaser_form", {loggedIn: true, email: req.user.emails[0].value});
+  } else {
+    // console.log("Not logged in");
+    res.render("booking_forms/gccLaser_form", {loggedIn: false});
+  }
+
+})
+
+router.get("/ultimaker2_form", function (req, res) {
+
+  if (req.user) {
+    // console.log("Logged in");
+    // console.log(req.user.emails[0].value);
+    res.render("booking_forms/ultimaker2_form", {loggedIn: true, email: req.user.emails[0].value});
+  } else {
+    // console.log("Not logged in");
+    res.render("booking_forms/ultimaker2_form", {loggedIn: false});
+  }
+
+})
+
+router.get("/rolandVinylCutter_form", function (req, res) {
+
+  if (req.user) {
+    // console.log("Logged in");
+    // console.log(req.user.emails[0].value);
+    res.render("booking_forms/rolandVinylCutter_form", {loggedIn: true, email: req.user.emails[0].value});
+  } else {
+    // console.log("Not logged in");
+    res.render("booking_forms/rolandVinylCutter_form", {loggedIn: false});
+  }
+
+})
+
 
 router.get("/events", function (req, res) {
   res.render("events");
