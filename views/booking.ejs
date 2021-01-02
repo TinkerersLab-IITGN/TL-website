@@ -122,6 +122,7 @@
                 <% } else { %>
                 <p class="available" id="MehtaLaser"></p>
                 <a class="btn btn-outline-light sign-in-btn" id="MehtaLaser-btn" href="/mehtaLaser_form" role="button">Book Now</a>
+                <a class="btn btn-outline-light sign-in-btn" id="MehtaLaser-calendar-btn" href="/mehtaLaser_calendar" role="button">See Calendar</a>
                 <% } %>
               </div>
             </div>
@@ -138,6 +139,7 @@
                 <% } else { %>
                 <p class="available" id="GCCLaser"></p>
                 <a class="btn btn-outline-light sign-in-btn" id="GCCLaser-btn" href="/gccLaser_form" role="button">Book Now</a>
+                <a class="btn btn-outline-light sign-in-btn" id="GCCLaser-calendar-btn" href="/gccLaser_calendar" role="button">See Calendar</a>
                 <% } %>
               </div>
             </div>
@@ -167,6 +169,7 @@
                 <% } else { %>
                 <p class="available" id="UM2"></p>
                 <a class="btn btn-outline-light sign-in-btn" id="UM2-btn" href="/ultimaker2_form" role="button">Book Now</a>
+                <a class="btn btn-outline-light sign-in-btn" id="UM2-calendar-btn" href="/ultimaker2_calendar" role="button">See Calendar</a>
                 <% } %>
               </div>
             </div>
@@ -183,6 +186,7 @@
                 <% } else { %>
                 <p class="available" id="UM3+"></p>
                 <a class="btn btn-outline-light sign-in-btn" id="UM3+-btn" href="#" role="button">Book Now</a>
+                <a class="btn btn-outline-light sign-in-btn" id="UM3+-calendar-btn" href="#" role="button">See Calendar</a>
                 <% } %>
               </div>
             </div>
@@ -199,6 +203,7 @@
                 <% } else { %>
                 <p class="available" id="MakerGear"></p>
                 <a class="btn btn-outline-light sign-in-btn" id="MakerGear-btn" href="#" role="button">Book Now</a>
+                <a class="btn btn-outline-light sign-in-btn" id="MakerGear-calendar-btn" href="#" role="button">See Calendar</a>
                 <% } %>
               </div>
             </div>
@@ -228,6 +233,7 @@
                 <% } else { %>
                 <p class="available" id="Vinyl"></p>
                 <a class="btn btn-outline-light sign-in-btn" id="Vinyl-btn" href="/rolandVinylCutter_form" role="button">Book Now</a>
+                <a class="btn btn-outline-light sign-in-btn" id="Vinyl-calendar-btn" href="/rolandVinylCutter_calendar" role="button">See Calendar</a>
                 <% } %>
               </div>
             </div>
@@ -321,8 +327,10 @@
 
           if (map[key] === "Yes") {
             document.getElementById(key + "-btn").style.display = "block";
+            document.getElementById(key + "-calendar-btn").style.display = "block";
           } else {
             document.getElementById(key + "-btn").style.display = "none";
+            document.getElementById(key + "-calendar-btn").style.display = "none";
           }
         });
 

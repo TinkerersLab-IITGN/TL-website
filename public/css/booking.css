@@ -81,7 +81,7 @@
 }
 
 /* Booking Buttons */
-.GCCLaser-btn, .MehtaLaser-btn, .UM-btn, .UM3+-btn, .MakerGear-btn, .Vinyl-btn {
+.GCCLaser-btn, .GCCLaser-calendar-btn, .MehtaLaser-btn, .MehtaLaser-calendar-btn, .UM2-btn, .UM2-calendar-btn, .UM3+-btn, .UM3+-calendar-btn, .MakerGear-btn, .MakerGear-calendar-btn, .Vinyl-btn, .Vinyl-Calendar-btn {
   display: none;
 }
 

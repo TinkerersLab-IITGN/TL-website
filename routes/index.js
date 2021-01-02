@@ -71,6 +71,58 @@ router.get("/rolandVinylCutter_form", function (req, res) {
 
 })
 
+router.get("/mehtaLaser_calendar", function (req, res) {
+
+  if (req.user) {
+    // console.log("Logged in");
+    // console.log(req.user.emails[0].value);
+    res.render("calendars/mehtaLaser_calendar", {loggedIn: true, email: req.user.emails[0].value});
+  } else {
+    // console.log("Not logged in");
+    res.render("calendars/mehtaLaser_calendar", {loggedIn: false});
+  }
+
+})
+
+router.get("/gccLaser_calendar", function (req, res) {
+
+  if (req.user) {
+    // console.log("Logged in");
+    // console.log(req.user.emails[0].value);
+    res.render("calendars/gccLaser_calendar", {loggedIn: true, email: req.user.emails[0].value});
+  } else {
+    // console.log("Not logged in");
+    res.render("calendars/gccLaser_calendar", {loggedIn: false});
+  }
+
+})
+
+router.get("/ultimaker2_calendar", function (req, res) {
+
+  if (req.user) {
+    // console.log("Logged in");
+    // console.log(req.user.emails[0].value);
+    res.render("calendars/ultimaker2_calendar", {loggedIn: true, email: req.user.emails[0].value});
+  } else {
+    // console.log("Not logged in");
+    res.render("calendars/ultimaker2_calendar", {loggedIn: false});
+  }
+
+})
+
+router.get("/rolandVinylCutter_calendar", function (req, res) {
+
+  if (req.user) {
+    // console.log("Logged in");
+    // console.log(req.user.emails[0].value);
+    res.render("calendars/rolandVinylCutter_calendar", {loggedIn: true, email: req.user.emails[0].value});
+  } else {
+    // console.log("Not logged in");
+    res.render("calendars/rolandVinylCutter_calendar", {loggedIn: false});
+  }
+
+})
+
 
 router.get("/events", function (req, res) {
   res.render("events");
