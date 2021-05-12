@@ -134,12 +134,14 @@ h2, h3, h4, h5, h6 {
 
 .footer {
   padding: 4%;
-  background-color: #a3ddcb;
-  opacity: 0.7;
+  padding-bottom: 1%;
+  background-color: #4c8285;/*#a3ddcb; */
+  color: white;
 }
 
 .footer-icon {
   font-size: 1.5rem;
+  color: white;
 }
 
 .coordinator-name, .coordinator-phone, .coordinator-email {
@@ -148,6 +150,8 @@ h2, h3, h4, h5, h6 {
 
 .social-icon, .contact-btn {
   margin: 6%;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .contact-btn {
