@@ -1,5 +1,5 @@
 .sign-in {
-  background-color: rgba(104, 109, 224, 0.8);
+  background-color: #686de0;
   padding: 2%;
   margin: 5%;
   margin-left: 15%;
@@ -32,7 +32,8 @@
 }
 
 .form {
-  background-color: rgba(163, 221, 203, 0.5);
+  color: white;
+  background-color: #686de0;/*#4C51A6;*/
   margin: 10%;
   padding: 10%;
   padding-top: 5%;

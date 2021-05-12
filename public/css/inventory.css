@@ -3,9 +3,15 @@
   display: inline-table;
 }
 
+.table {
+  border-width: 2px !important;
+  border-style: solid;
+  border-color: #686de0;
+}
+
 .inv_tab thead {
   text-align: center;
-  background-color: black;
+  background-color: #686de0;
   color:white;
 }
 
@@ -13,11 +19,29 @@
   text-align: center;
   margin-top: auto;
   margin-bottom: auto;
+  border-width: 2px !important;
+  border-style: solid;
+  border-color: #2D2F61;
+}
+
+.inv_tab th {
+  border-width: 2px;
+  border-style: solid;
+  border-color: #2D2F61;
+}
+
+.th-top {
+  border-width: 2px !important;
+  border-style: solid;
+  border-color: white;
 }
 
 .inv_tab td {
   align-content: center;
   width: 40%;
+  border-width: 2px !important;
+  border-style: solid;
+  border-color: #2D2F61;
 }
 
 td img {
@@ -43,7 +67,7 @@ td img {
 .spinner > div {
   width: 18px;
   height: 18px;
-  background-color: rgba(104, 109, 224, 1);
+  background-color: #686de0;
 
   border-radius: 100%;
   display: inline-block;

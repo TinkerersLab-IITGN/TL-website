@@ -8,9 +8,11 @@
   padding-left: 8%;
   margin-top: 6%;
   padding-right: 2%;
-  background-color: rgba(163, 221, 203, 0.5);
+  background-color: #686de0;
   border-top-right-radius: 50%;
   border-bottom-right-radius: 50%;
+  color: white;
+  font-weight: bold;
 }
 
 .heading-contact {
@@ -18,7 +20,12 @@
 }
 
 .content {
-  color: #555;
+  color: white;
+  font-weight: normal;
+}
+
+.heading-msg {
+  color: white;
 }
 
 .content p {
@@ -45,7 +52,7 @@
   margin: 5%;
   margin-left: 0;
   margin-bottom: 0;
-  background-color: rgba(163, 221, 203, 0.5);
+  background-color: #686de0;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
 }
