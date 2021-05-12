@@ -47,6 +47,10 @@ h2, h3, h4, h5, h6 {
 }
 
 /* NavBar */
+.navbar {
+  background-color: #2D2F61 !important;
+}
+
 .navbar-collapse {
   margin-right: 5%;
 }
@@ -71,6 +75,15 @@ h2, h3, h4, h5, h6 {
   color: white;
   font-size: 1.8rem;
 }
+
+@media only screen and (max-width:777px) {
+  .heading {
+    font-size: 1.2rem;
+    margin-top: 10%;
+    width: 200px;
+  }
+}
+
 
 .small-space {
   height: 8vh;
