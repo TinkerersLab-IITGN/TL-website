@@ -1,6 +1,6 @@
 /* Top Container */
 .top-container {
-  background: #4c8285;/*#a3ddcb; */
+  background: #686de0;/*#a3ddcb; */
   /* background: linear-gradient(0deg, rgba(33,230,193,0.3) 0%, rgba(12,248,204,1) 35%, rgba(0,212,255,1) 100%); */
   /* background: linear-gradient(to right, #34656d, #4c8285, #669f9d, #83beb4, #a3ddcb); */
   padding: 5%;
@@ -21,7 +21,7 @@
   margin-top: 2vw;
   margin-bottom: 2vw;
   width: 70%;
-  filter: brightness(2.5);
+  filter: brightness(3.75);
 }
 
 .theme-row {
