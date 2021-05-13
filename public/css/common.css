@@ -76,9 +76,9 @@ h2, h3, h4, h5, h6 {
   font-size: 1.8rem;
 }
 
-.heading-otherpages-top {
+/* .heading-otherpages-top {
   margin-top: 12%;
-}
+} */
 
 @media only screen and (max-width:777px) {
   .heading {
@@ -87,9 +87,9 @@ h2, h3, h4, h5, h6 {
     width: 200px;
   }
 
-  .heading-otherpages-top {
+  /* .heading-otherpages-top {
     margin-top: 15%;
-  }
+  } */
 }
 
 
@@ -101,6 +101,7 @@ h2, h3, h4, h5, h6 {
 .wave-svg {
   position: absolute;
   z-index: -1;
+  display: none;
 }
 
 .egg-shape-2 {
