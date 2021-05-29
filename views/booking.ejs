@@ -9,6 +9,8 @@
   <meta name="author" content="Gaurav Viramgami | Kritika Kumawat">
   <meta name="description" value="Tinkerers' Lab is a platform for students to experience innovation and prepare themselves for the future through self-learning.">
   <link rel="icon" href="\images\TL_logo.png">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="229423012134-u4dv6s53mpllopu3ig79o4njqr4cr2nl.apps.googleusercontent.com">
 
   <!--Bootstrap-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -83,19 +85,21 @@
     <% if (!loggedIn) { %>
     <div class="sign-in text-center">
       <p class="sign-in-text">Please Sign In to Book Machine</p>
-      <a class="btn btn-outline-light sign-in-btn" href="/google" role="button">Sign In with Google Account</a>
+      <!-- <a class="btn btn-outline-light sign-in-btn g-signin2" data-onsuccess="onSignIn">Sign In with Google Account</a> -->
+      <a class="btn g-signin2 sign-in-btn" data-onsuccess="onSignIn"></a>
     </div>
     <% } else { %>
     <div class="sign-in text-center">
       <p class="sign-in-text">You are Signed In as: <%= email %></p>
       <div class="row sign-in-row">
-        <div class="col-sm-12 col-md-6">
-          <a class="btn btn-outline-light sign-in-btn" href="/google" role="button">Sign In with another Email</a>
+        <div class="col-sm-12 col-md-6 sign-in-text">
+          Sign In with another Email: <a class="btn g-signin2 sign-in-btn" data-onsuccess="onSignIn"></a>
         </div>
         <div class="col-sm-12 col-md-6">
-          <a class="btn btn-outline-light sign-in-btn" href="/logout" role="button">Logout</a>
+          <a class="btn btn-outline-light sign-in-btn" href="/logout">Logout</a>
         </div>
       </div>
+      <!-- <a class="btn g-signin2 sign-in-btn" data-onsuccess="onSignIn"></a> -->
     </div>
     <% } %>
 
@@ -114,7 +118,8 @@
               <h5 class="card-title text-center">Mehta Laser Cutter</h5>
               <div class="details text-center">
                 <% if (!loggedIn) { %>
-                <a class="btn btn-outline-light sign-in-btn" href="/google" role="button"><i class="fas fa-lock"></i> Sign In</a>
+                <!-- <a class="btn btn-outline-light sign-in-btn" href="/google" role="button"><i class="fas fa-lock"></i> Sign In</a> -->
+                <a class="btn g-signin2 sign-in-btn" data-onsuccess="onSignIn"></a>
                 <% } else { %>
                 <p class="available" id="MehtaLaser"></p>
                 <a class="btn btn-outline-light sign-in-btn" id="MehtaLaser-btn" href="/mehtaLaser_form" role="button">Book Now</a>
@@ -131,7 +136,8 @@
               <h5 class="card-title text-center">GCC Laser Cutter</h5>
               <div class="details text-center">
                 <% if (!loggedIn) { %>
-                <a class="btn btn-outline-light sign-in-btn" href="/google" role="button"><i class="fas fa-lock"></i> Sign In</a>
+                <!-- <a class="btn btn-outline-light sign-in-btn" href="/google" role="button"><i class="fas fa-lock"></i> Sign In</a> -->
+                <a class="btn g-signin2 sign-in-btn" data-onsuccess="onSignIn"></a>
                 <% } else { %>
                 <p class="available" id="GCCLaser"></p>
                 <a class="btn btn-outline-light sign-in-btn" id="GCCLaser-btn" href="/gccLaser_form" role="button">Book Now</a>
@@ -152,16 +158,17 @@
       <div class="row machine-row">
         <div class="col-sm-12 col-md-12">
           <div class="card vinyl-card shadow">
-            <img class="card-img-top" src="/images/printer.jpeg" alt="">
+            <img class="card-img-top" src="/images/UM3.jpg" alt="">
             <div class="card-body">
               <h5 class="card-title text-center">3D Printer</h5>
               <div class="details text-center">
                 <% if (!loggedIn) { %>
-                <a class="btn btn-outline-light sign-in-btn" href="/google" role="button"><i class="fas fa-lock"></i> Sign In</a>
+                <!-- <a class="btn btn-outline-light sign-in-btn" href="/google" role="button"><i class="fas fa-lock"></i> Sign In</a> -->
+                <a class="btn g-signin2 sign-in-btn" data-onsuccess="onSignIn"></a>
                 <% } else { %>
-                <p class="available" id="UM2"></p>
-                <a class="btn btn-outline-light sign-in-btn" id="UM2-btn" href="/ultimaker2_form" role="button">Book Now</a>
-                <a class="btn btn-outline-light sign-in-btn" id="UM2-calendar-btn" href="/ultimaker2_calendar" role="button">See Calendar</a>
+                <p class="available" id="3DPrinter"></p>
+                <a class="btn btn-outline-light sign-in-btn" id="3DPrinter-btn" href="/3dprinter_form" role="button">Book Now</a>
+                <a class="btn btn-outline-light sign-in-btn" id="3DPrinter-calendar-btn" href="/3dprinter_calendar" role="button">See Calendar</a>
                 <% } %>
               </div>
             </div>
@@ -217,7 +224,8 @@
               <h5 class="card-title text-center">Roland Vinyl Cutter</h5>
               <div class="details text-center">
                 <% if (!loggedIn) { %>
-                <a class="btn btn-outline-light sign-in-btn" href="/google" role="button"><i class="fas fa-lock"></i> Sign In</a>
+                <!-- <a class="btn btn-outline-light sign-in-btn" href="/google" role="button"><i class="fas fa-lock"></i> Sign In</a> -->
+                <a class="btn g-signin2 sign-in-btn" data-onsuccess="onSignIn"></a>
                 <% } else { %>
                 <p class="available" id="Vinyl"></p>
                 <a class="btn btn-outline-light sign-in-btn" id="Vinyl-btn" href="/rolandVinylCutter_form" role="button">Book Now</a>
@@ -296,8 +304,33 @@
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <!-- <script src="/js/booking.js" charset="utf-8"></script> -->
   <script type="text/javascript">
+    // var loggedIn = false;
+    // var email = "";
+    function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      var id_token = googleUser.getAuthResponse().id_token;
+        // console.log(id_token);
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', '/login');
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify({token : id_token}));
+      xhr.onload = function() {
+          // console.log('Signed in as: ' + xhr.responseText);
+          if(xhr.responseText == 'success'){
+              location.assign('/booking')
+              signOut();
+          }
+      };
+    }
+    function signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+      });
+    }
     var map;
     if ("<%= loggedIn %>" === "true") {
+    // if (loggedIn) {
       document.getElementById("loading").style.display = "block";
       document.getElementById("main").style.display = "none";
       var jqxhr = $.ajax({
@@ -312,7 +345,7 @@
           "GCCLaser": list[0],
           "MehtaLaser": list[1],
           "Vinyl": list[2],
-          "UM2": list[3],
+          "3DPrinter": list[3],
           // "UM3+": list[4],
           // "MakerGear": list[5]
         };

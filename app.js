@@ -6,21 +6,24 @@ var express = require("express"),
   app = express(),
   methodOverride = require("method-override"),
   bodyParser = require("body-parser");
+const cookieParser = require('cookie-parser');
 
-const passport = require('passport');
-const cookieSession = require('cookie-session')
-require('./passport-setup');
-
-app.use(cookieSession({
-    name: 'tuto-session',
-    keys: ['key1', 'key2']
-  }))
+// const passport = require('passport');
+// const cookieSession = require('cookie-session')
+// require('./passport-setup');
+//
+// app.use(cookieSession({
+//     name: 'tuto-session',
+//     keys: ['key1', 'key2']
+//   }))
 
 //app.use(cors());
 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
+app.use(express.json());
+app.use(cookieParser());
 app.set("view engine", "ejs")
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded({

@@ -89,7 +89,7 @@
 }
 
 .white > div {
-  background-color: white;
+  background-color: white !important;
 }
 
 .spinner .bounce1 {
