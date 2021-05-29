@@ -99,7 +99,7 @@
 }
 
 .events-card {
-  margin: 4%;
+  /* margin: 4%; */
   background-color: #fff;
   border-radius: 20px !important;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 6px 6px rgba(0, 0, 0, 0.18);
@@ -110,7 +110,7 @@
 /* Testmonials */
 
 .testimonial-div {
-  padding: 10%;
+  padding: 5%;
   padding-top: 2%;
   padding-bottom: 2%;
 }
@@ -121,7 +121,7 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   overflow: hidden;
   max-width: 100%;
-  margin: 4%;
+  margin: 4%; 
   /* width: 400px; */
 }
 
