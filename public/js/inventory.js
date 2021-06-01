@@ -52,7 +52,23 @@ var jqxhr = $.ajax({
     var cell1 = document.createElement("td");
     var cell1Text = document.createTextNode("Will be updated soon!");
     cell1.appendChild(cell1Text);
+    var cell2 = document.createElement("td");
+    var cell2Text = document.createTextNode("");
+    cell2.appendChild(cell2Text);
+    var cell3 = document.createElement("td");
+    var cell3Text = document.createTextNode("");
+    cell3.appendChild(cell3Text);
+    var cell4 = document.createElement("td");
+    var cell4Text = document.createTextNode("");
+    cell4.appendChild(cell4Text);
+    var cell5 = document.createElement("td");
+    var cell5Text = document.createTextNode("");
+    cell5.appendChild(cell5Text);
     row.appendChild(cell1);
+    row.appendChild(cell2);
+    row.appendChild(cell3);
+    row.appendChild(cell4);
+    row.appendChild(cell5);
     tbody.appendChild(row);
   }
 
