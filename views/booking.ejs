@@ -84,16 +84,16 @@
     <!-- Sign In -->
     <% if (!loggedIn) { %>
     <div class="sign-in text-center">
-      <p class="sign-in-text">Please Sign In to Book Machine</p>
+      <p class="sign-in-text">Please sign in to book machines</p>
       <!-- <a class="btn btn-outline-light sign-in-btn g-signin2" data-onsuccess="onSignIn">Sign In with Google Account</a> -->
       <a class="btn g-signin2 sign-in-btn" data-onsuccess="onSignIn"></a>
     </div>
     <% } else { %>
     <div class="sign-in text-center">
-      <p class="sign-in-text">You are Signed In as: <%= email %></p>
+      <p class="sign-in-text">You are signed in as: <%= email %></p>
       <div class="row sign-in-row">
         <div class="col-sm-12 col-md-6 sign-in-text">
-          Sign In with another Email: <a class="btn g-signin2 sign-in-btn" data-onsuccess="onSignIn"></a>
+          Sign in with another Email: <a class="btn g-signin2 sign-in-btn" data-onsuccess="onSignIn"></a>
         </div>
         <div class="col-sm-12 col-md-6">
           <a class="btn btn-outline-light sign-in-btn" href="/logout">Logout</a>
