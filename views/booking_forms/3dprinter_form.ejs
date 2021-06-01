@@ -374,6 +374,11 @@
         </select> </div>
 
       <div class="form-row">
+        <div class="form-group col-md-6"> <label> Expected Print Time (in hours)* </label> <input name="printtime_project" id="printtime_project" class="form-control" placeholder="Print Time"> </div>
+        <div class="form-group col-md-6"> <label> Material Required (eg. PLA, ABS)* </label> <input type="text" name="material_project" id="material_project" class="form-control" placeholder="Material" required> </div>
+      </div>
+
+      <div class="form-row">
         <div class="form-group col-md-6"><label for="start_time_project">Start Time</label><br>
           <input type="datetime-local" id="start_time_project" name="start_time_project" value="" min="" max="">
         </div>
@@ -382,7 +387,7 @@
         </div>
       </div>
 
-      <div class="form-group"><label for="files_project">Attach Files</label>
+      <div class="form-group"><label for="files_project">Attach Files (gcode)</label>
         <input type="file" name="files_project" id="files_project" multiple="multiple" accept="application/sla, text/x.gcode, .gcode" />
       </div>
 
@@ -403,6 +408,11 @@
         </select> </div>
 
       <div class="form-row">
+        <div class="form-group col-md-6"> <label> Expected Print Time (in hours)* </label> <input name="printtime_event" id="printtime_event" class="form-control" placeholder="Print Time"> </div>
+        <div class="form-group col-md-6"> <label> Material Required (eg. PLA, ABS)* </label> <input type="text" name="material_event" id="material_event" class="form-control" placeholder="Material" required> </div>
+      </div>
+
+      <div class="form-row">
         <div class="form-group col-md-6"><label for="start_time_event">Start Time</label><br>
           <input type="datetime-local" id="start_time_event" name="start_time_event" value="" min="" max="">
         </div>
@@ -411,7 +421,7 @@
         </div>
       </div>
 
-      <div class="form-group"><label for="files_event">Attach Files</label>
+      <div class="form-group"><label for="files_event">Attach Files (gcode)</label>
         <input type="file" name="files_event" id="files_event" multiple="multiple" accept="application/sla, text/x.gcode, .gcode" />
       </div>
 
@@ -435,6 +445,11 @@
         </select> </div>
 
       <div class="form-row">
+        <div class="form-group col-md-6"> <label> Expected Print Time (in hours)* </label> <input name="printtime_other" id="printtime_other" class="form-control" placeholder="Print Time"> </div>
+        <div class="form-group col-md-6"> <label> Material Required (eg. PLA, ABS)* </label> <input type="text" name="material_other" id="material_other" class="form-control" placeholder="Material" required> </div>
+      </div>
+
+      <div class="form-row">
         <div class="form-group col-md-6"><label for="start_time_other">Start Time</label><br>
           <input type="datetime-local" id="start_time_other" name="start_time_other" value="" min="" max="">
         </div>
@@ -443,7 +458,7 @@
         </div>
       </div>
 
-      <div class="form-group"><label for="files_other">Attach Files</label>
+      <div class="form-group"><label for="files_other">Attach Files (gcode)</label>
         <input type="file" name="files_other" id="files_other" multiple="multiple" accept="application/sla, text/x.gcode, .gcode" />
       </div>
 
@@ -580,16 +595,22 @@
     var attended_workshop_other;
 
     var priority_project;
+    var printtime_project;
+    var material_project;
     var start_time_project;
     var end_time_project;
     var files_project;
 
     var priority_event;
+    var printtime_event;
+    var material_event;
     var start_time_event;
     var end_time_event;
     var files_event;
 
     var priority_other;
+    var printtime_other;
+    var material_other;
     var start_time_other;
     var end_time_other;
     var files_other;
@@ -774,6 +795,8 @@
 
     function submit_project() {
       priority_project = $("#priority_project").val();
+      printtime_project = $("#printtime_project").val();
+      material_project = $("#material_project").val();
       start_time_project = $("#start_time_project").val();
       end_time_project = $("#end_time_project").val();
       files_project = $("#files_project").val();
@@ -798,9 +821,9 @@
 
       if (!correctFileType) {
         error_show("Please upload gcode files!");
-      } else if (priority_project === null || start_time_project === null || end_time_project === null || files_project === null) {
+      } else if (priority_project === null || printtime_project === null || material_project === null || start_time_project === null || end_time_project === null || files_project === null) {
         error_show("Please fill all the fields!");
-      } else if (priority_project.trim() === "" || start_time_project.trim() === "" || end_time_project.trim() === "" || getFile.files.length === 0) {
+      } else if (priority_project.trim() === "" || printtime_project.trim() === "" || material_project.trim() === "" || start_time_project.trim() === "" || end_time_project.trim() === "" || getFile.files.length === 0) {
         error_show("Please fill all the fields!");
       } else if (start_time_project_dateFormat >= end_time_project_dateFormat) {
         error_show("Please fill valid time!");
@@ -823,7 +846,7 @@
 
             if (filesList.length == len) {
               //const purl = "https://cors-anywhere.herokuapp.com/"; // (Uncomment for CORS error)
-              const url = "https://script.google.com/macros/s/AKfycbwiSMuzHoFt2Wa0pTE3Rw4CUCCCQ4apueOL30EUg0eCJUi6coGezoaUs_eUIEUlCN8lkw/exec";
+              const url = "https://script.google.com/macros/s/AKfycbzvAeelyJedRRgDK3B9ZkluZsqoHkQp-3EqO3uBlgLhcYg1b9y412gXi1ZMM5D4sGKsuA/exec";
               //const combine = purl + url; // (Uncomment for CORS error)
               const qs = new URLSearchParams({
                 SignedIn_Email: signedIn_email,
@@ -835,6 +858,8 @@
                 Used_Before: used_before_project,
                 Attended_Workshop: attended_workshop_project,
                 Priority: priority_project,
+                Printtime: printtime_project,
+                Material: material_project,
                 Start_Time: s_t,
                 End_Time: e_t,
                 filesName: filesName,
@@ -873,6 +898,8 @@
                       $("#used_before_project").val('');
                       $("#attended_workshop_project").val('');
                       $("#priority_project").val('');
+                      $("#printtime_project").val('');
+                      $("#material_project").val('');
                       $("#start_time_project").val('');
                       $("#end_time_project").val('');
                       $("#files_project").val('');
@@ -1032,7 +1059,7 @@
           Sunday_End_Time: (sunday_end_time_course === null)?"-":sunday_end_time_course
         });
 
-        const url = "https://script.google.com/macros/s/AKfycbwiSMuzHoFt2Wa0pTE3Rw4CUCCCQ4apueOL30EUg0eCJUi6coGezoaUs_eUIEUlCN8lkw/exec";
+        const url = "https://script.google.com/macros/s/AKfycbzvAeelyJedRRgDK3B9ZkluZsqoHkQp-3EqO3uBlgLhcYg1b9y412gXi1ZMM5D4sGKsuA/exec";
 
         const qs = new URLSearchParams({
           Purpose: "Course Work"
@@ -1124,6 +1151,8 @@
 
     function submit_event() {
       priority_event = $("#priority_event").val();
+      printtime_event = $("#printtime_event").val();
+      material_event = $("#material_event").val();
       start_time_event = $("#start_time_event").val();
       end_time_event = $("#end_time_event").val();
       files_event = $("#files_event").val();
@@ -1149,9 +1178,9 @@
 
       if (!correctFileType) {
         error_show("Please upload gcode files!");
-      } else if (priority_event === null || start_time_event === null || end_time_event === null || files_event === null) {
+      } else if (priority_event === null || printtime_event === null || material_event === null || start_time_event === null || end_time_event === null || files_event === null) {
         error_show("Please fill all the fields!");
-      } else if (priority_event.trim() === "" || start_time_event.trim() === "" || end_time_event.trim() === "" || getFile.files.length === 0) {
+      } else if (priority_event.trim() === "" || printtime_event.trim() === "" || material_event.trim() === "" || start_time_event.trim() === "" || end_time_event.trim() === "" || getFile.files.length === 0) {
         error_show("Please fill all the fields!");
       } else if (start_time_event_dateFormat >= end_time_event_dateFormat) {
         error_show("Please fill valid time!");
@@ -1174,7 +1203,7 @@
 
             if (filesList.length == len) {
               //const purl = "https://cors-anywhere.herokuapp.com/"; // (Uncomment for CORS error)
-              const url = "https://script.google.com/macros/s/AKfycbwiSMuzHoFt2Wa0pTE3Rw4CUCCCQ4apueOL30EUg0eCJUi6coGezoaUs_eUIEUlCN8lkw/exec";
+              const url = "https://script.google.com/macros/s/AKfycbzvAeelyJedRRgDK3B9ZkluZsqoHkQp-3EqO3uBlgLhcYg1b9y412gXi1ZMM5D4sGKsuA/exec";
               //const combine = purl + url; // (Uncomment for CORS error)
               const qs = new URLSearchParams({
                 SignedIn_Email: signedIn_email,
@@ -1187,6 +1216,8 @@
                 Used_Before: used_before_event,
                 Attended_Workshop: attended_workshop_event,
                 Priority: priority_event,
+                Printtime: printtime_event,
+                Material: material_event,
                 Start_Time: s_t,
                 End_Time: e_t,
                 filesName: filesName,
@@ -1226,6 +1257,8 @@
                       $("#used_before_event").val('');
                       $("#attended_workshop_event").val('');
                       $("#priority_event").val('');
+                      $("#printtime_event").val('');
+                      $("#material_event").val('');
                       $("#start_time_event").val('');
                       $("#end_time_event").val('');
                       $("#files_event").val('');
@@ -1276,6 +1309,8 @@
 
     function submit_other() {
       priority_other = $("#priority_other").val();
+      printtime_other = $("#printtime_other").val();
+      material_other = $("#material_other").val();
       start_time_other = $("#start_time_other").val();
       end_time_other = $("#end_time_other").val();
       files_other = $("#files_other").val();
@@ -1301,9 +1336,9 @@
 
       if (!correctFileType) {
         error_show("Please upload gcode files!");
-      } else if (priority_other === null || start_time_other === null || end_time_other === null || files_other === null) {
+      } else if (priority_other === null || printtime_other === null || material_other === null || start_time_other === null || end_time_other === null || files_other === null) {
         error_show("Please fill all the fields!");
-      } else if (priority_other.trim() === "" || start_time_other.trim() === "" || end_time_other.trim() === "" || getFile.files.length === 0) {
+      } else if (priority_other.trim() === "" || printtime_other.trim() === "" || material_other.trim() === "" || start_time_other.trim() === "" || end_time_other.trim() === "" || getFile.files.length === 0) {
         error_show("Please fill all the fields!");
       } else if (start_time_other_dateFormat >= end_time_other_dateFormat) {
         error_show("Please fill valid time!");
@@ -1326,7 +1361,7 @@
 
             if (filesList.length == len) {
               //const purl = "https://cors-anywhere.herokuapp.com/"; // (Uncomment for CORS error)
-              const url = "https://script.google.com/macros/s/AKfycbwiSMuzHoFt2Wa0pTE3Rw4CUCCCQ4apueOL30EUg0eCJUi6coGezoaUs_eUIEUlCN8lkw/exec";
+              const url = "https://script.google.com/macros/s/AKfycbzvAeelyJedRRgDK3B9ZkluZsqoHkQp-3EqO3uBlgLhcYg1b9y412gXi1ZMM5D4sGKsuA/exec";
               //const combine = purl + url; // (Uncomment for CORS error)
               const qs = new URLSearchParams({
                 SignedIn_Email: signedIn_email,
@@ -1339,6 +1374,8 @@
                 Used_Before: used_before_other,
                 Attended_Workshop: attended_workshop_other,
                 Priority: priority_other,
+                Printtime: printtime_other,
+                Material: material_other,
                 Start_Time: s_t,
                 End_Time: e_t,
                 filesName: filesName,
@@ -1378,6 +1415,8 @@
                       $("#used_before_other").val('');
                       $("#attended_workshop_other").val('');
                       $("#priority_other").val('');
+                      $("#printtime_other").val('');
+                      $("#material_other").val('');
                       $("#start_time_other").val('');
                       $("#end_time_other").val('');
                       $("#files_other").val('');
