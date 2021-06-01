@@ -383,7 +383,7 @@
       </div>
 
       <div class="form-group"><label for="files_project">Attach Files</label>
-        <input type="file" name="files_project" id="files_project" multiple="multiple" accept=".dxf, application/dxf" />
+        <input type="file" name="files_project" id="files_project" multiple="multiple" accept=".dxf, application/dxf, image/*" />
       </div>
 
       <div class="text-center">
@@ -412,7 +412,7 @@
       </div>
 
       <div class="form-group"><label for="files_event">Attach Files</label>
-        <input type="file" name="files_event" id="files_event" multiple="multiple" accept=".dxf, application/dxf" />
+        <input type="file" name="files_event" id="files_event" multiple="multiple" accept=".dxf, application/dxf, image/*" />
       </div>
 
       <div class="text-center">
@@ -444,7 +444,7 @@
       </div>
 
       <div class="form-group"><label for="files_other">Attach Files</label>
-        <input type="file" name="files_other" id="files_other" multiple="multiple" accept=".dxf, application/dxf" />
+        <input type="file" name="files_other" id="files_other" multiple="multiple" accept=".dxf, application/dxf, image/*" />
       </div>
 
       <div class="text-center">
@@ -793,14 +793,14 @@
       for (var i = 0; i < getFile.files.length; i++) {
           var name = getFile.files[i].name;
           var extension = name.split(".");
-          if (extension[extension.length - 1] != ".dxf") {
+          if (extension[extension.length - 1] != ".dxf" || extension[extension.length - 1] != ".png" || extension[extension.length - 1] != ".jpeg" || extension[extension.length - 1] != ".jpg") {
             correctFileType = false;
             break;
           }
       }
 
       if (!correctFileType) {
-        error_show("Please upload dxf files!");
+        error_show("Please upload dxf or image files!");
       } else if (priority_project === null || start_time_project === null || end_time_project === null || files_project === null) {
         error_show("Please fill all the fields!");
       } else if (priority_project.trim() === "" || start_time_project.trim() === "" || end_time_project.trim() === "" || getFile.files.length === 0) {
@@ -1144,14 +1144,14 @@
       for (var i = 0; i < getFile.files.length; i++) {
           var name = getFile.files[i].name;
           var extension = name.split(".");
-          if (extension[extension.length - 1] != ".dxf") {
+          if (extension[extension.length - 1] != ".dxf" || extension[extension.length - 1] != ".png" || extension[extension.length - 1] != ".jpeg" || extension[extension.length - 1] != ".jpg") {
             correctFileType = false;
             break;
           }
       }
 
       if (!correctFileType) {
-        error_show("Please upload dxf files!");
+        error_show("Please upload dxf or image files!");
       } else if (priority_event === null || start_time_event === null || end_time_event === null || files_event === null) {
         error_show("Please fill all the fields!");
       } else if (priority_event.trim() === "" || start_time_event.trim() === "" || end_time_event.trim() === "" || getFile.files.length === 0) {
@@ -1296,14 +1296,14 @@
       for (var i = 0; i < getFile.files.length; i++) {
           var name = getFile.files[i].name;
           var extension = name.split(".");
-          if (extension[extension.length - 1] != ".dxf") {
+          if (extension[extension.length - 1] != ".dxf" || extension[extension.length - 1] != ".png" || extension[extension.length - 1] != ".jpeg" || extension[extension.length - 1] != ".jpg") {
             correctFileType = false;
             break;
           }
       }
 
       if (!correctFileType) {
-        error_show("Please upload dxf files!");
+        error_show("Please upload dxf or image files!");
       } else if (priority_other === null || start_time_other === null || end_time_other === null || files_other === null) {
         error_show("Please fill all the fields!");
       } else if (priority_other.trim() === "" || start_time_other.trim() === "" || end_time_other.trim() === "" || getFile.files.length === 0) {
