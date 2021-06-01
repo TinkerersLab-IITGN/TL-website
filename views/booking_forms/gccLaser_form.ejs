@@ -789,7 +789,19 @@
       var getFile = document.getElementById("files_project");
       var len = getFile.files.length;
 
-      if (priority_project === null || start_time_project === null || end_time_project === null || files_project === null) {
+      var correctFileType = true;
+      for (var i = 0; i < getFile.files.length; i++) {
+          var name = getFile.files[i].name;
+          var extension = name.split(".");
+          if (extension[extension.length - 1] != ".dxf") {
+            correctFileType = false;
+            break;
+          }
+      }
+
+      if (!correctFileType) {
+        error_show("Please upload dxf files!");
+      } else if (priority_project === null || start_time_project === null || end_time_project === null || files_project === null) {
         error_show("Please fill all the fields!");
       } else if (priority_project.trim() === "" || start_time_project.trim() === "" || end_time_project.trim() === "" || getFile.files.length === 0) {
         error_show("Please fill all the fields!");
@@ -1128,7 +1140,19 @@
       var getFile = document.getElementById("files_event");
       var len = getFile.files.length;
 
-      if (priority_event === null || start_time_event === null || end_time_event === null || files_event === null) {
+      var correctFileType = true;
+      for (var i = 0; i < getFile.files.length; i++) {
+          var name = getFile.files[i].name;
+          var extension = name.split(".");
+          if (extension[extension.length - 1] != ".dxf") {
+            correctFileType = false;
+            break;
+          }
+      }
+
+      if (!correctFileType) {
+        error_show("Please upload dxf files!");
+      } else if (priority_event === null || start_time_event === null || end_time_event === null || files_event === null) {
         error_show("Please fill all the fields!");
       } else if (priority_event.trim() === "" || start_time_event.trim() === "" || end_time_event.trim() === "" || getFile.files.length === 0) {
         error_show("Please fill all the fields!");
@@ -1268,7 +1292,19 @@
       var getFile = document.getElementById("files_other");
       var len = getFile.files.length;
 
-      if (priority_other === null || start_time_other === null || end_time_other === null || files_other === null) {
+      var correctFileType = true;
+      for (var i = 0; i < getFile.files.length; i++) {
+          var name = getFile.files[i].name;
+          var extension = name.split(".");
+          if (extension[extension.length - 1] != ".dxf") {
+            correctFileType = false;
+            break;
+          }
+      }
+
+      if (!correctFileType) {
+        error_show("Please upload dxf files!");
+      } else if (priority_other === null || start_time_other === null || end_time_other === null || files_other === null) {
         error_show("Please fill all the fields!");
       } else if (priority_other.trim() === "" || start_time_other.trim() === "" || end_time_other.trim() === "" || getFile.files.length === 0) {
         error_show("Please fill all the fields!");
