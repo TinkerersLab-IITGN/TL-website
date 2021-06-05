@@ -120,7 +120,7 @@
 /* Testmonials */
 
 .testimonial-div {
-  padding: 5%;
+  /* padding: 5%; */
   padding-top: 1%;
   padding-bottom: 2%;
 }
@@ -176,6 +176,49 @@
   color: #b3b5ef;
   margin: 0;
   letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    #recipeCarousel .carousel-inner .carousel-item > div {
+        display: none;
+    }
+    #recipeCarousel .carousel-inner .carousel-item > div:first-child {
+        display: block;
+    }
+}
+
+#recipeCarousel .carousel-inner .carousel-item.active,
+#recipeCarousel .carousel-inner .carousel-item-next,
+#recipeCarousel .carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+/* display 3 */
+@media (min-width: 768px) {
+
+    #recipeCarousel .carousel-inner .carousel-item-right.active,
+    #recipeCarousel .carousel-inner .carousel-item-next {
+      transform: translateX(33.333%);
+    }
+
+    #recipeCarousel .carousel-inner .carousel-item-left.active,
+    #recipeCarousel .carousel-inner .carousel-item-prev {
+      transform: translateX(-33.333%);
+    }
+}
+
+#recipeCarousel .carousel-inner .carousel-item-right,
+#recipeCarousel .carousel-inner .carousel-item-left{
+  transform: translateX(0);
+}
+
+.border {
+  border-width: 5px !important;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  width: 30px;
+  height: 30px;
 }
 
 /* Our Team */
