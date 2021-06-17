@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KritikaKumawat3108/TL-website.git"
+    "url": "git+https://github.com/TinkerersLabIITGN/TL-website.git"
   },
   "author": "Kritika Kumawat, Gaurav Viramgami",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/KritikaKumawat3108/TL-website/issues"
+    "url": "https://github.com/TinkerersLabIITGN/TL-website/issues"
   },
-  "homepage": "https://github.com/KritikaKumawat3108/TL-website#readme",
+  "homepage": "https://github.com/TinkerersLabIITGN/TL-website#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
