@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 
 // Google Auth
 const {OAuth2Client} = require('google-auth-library');
-const CLIENT_ID = '229423012134-u4dv6s53mpllopu3ig79o4njqr4cr2nl.apps.googleusercontent.com'
+const CLIENT_ID = {CLIENT_ID}
 const client = new OAuth2Client(CLIENT_ID);
 
 router.use(express.json());
