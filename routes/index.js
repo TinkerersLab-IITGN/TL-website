@@ -1,3 +1,4 @@
+require('dotenv').config()
 var express = require("express")
 var router = express.Router()
 // var passport = require("passport")
@@ -5,7 +6,7 @@ const cookieParser = require('cookie-parser');
 
 // Google Auth
 const {OAuth2Client} = require('google-auth-library');
-const CLIENT_ID = {CLIENT_ID}
+const CLIENT_ID = process.env.CLIENT_ID;
 const client = new OAuth2Client(CLIENT_ID);
 
 router.use(express.json());

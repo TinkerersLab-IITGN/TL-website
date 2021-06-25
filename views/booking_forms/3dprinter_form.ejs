@@ -844,7 +844,7 @@
             filesList.push([...new Int8Array(f.target.result)]);
             filesName.push(file.name);
             filesType.push(file.type);
-
+            console.log(i)
             if (filesList.length == len) {
               //const purl = "https://cors-anywhere.herokuapp.com/"; // (Uncomment for CORS error)
               const url = "https://script.google.com/macros/s/AKfycbzAKNVXpD9JIngVdUQqIqFJprQFy-UAvrcncvHev_OLHW28lysDxt4V4U-u2MSTkgF04g/exec";
