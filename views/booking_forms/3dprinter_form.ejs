@@ -13,8 +13,8 @@
   <!--Bootstrap-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/css/common.css">
-  <link rel="stylesheet" href="/css/form.css">
+  <link rel="stylesheet" href="/tinkerers-lab/public/css/common.css">
+  <link rel="stylesheet" href="/tinkerers-lab/public/css/form.css">
 
   <!--Fonts-->
   <!-- <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet"> -->
@@ -39,22 +39,22 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/tinkerers-lab">Home</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/booking">Booking Portal <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/tinkerers-lab/booking">Booking Portal <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/events">Events</a>
+            <a class="nav-link" href="/tinkerers-lab/events">Events</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/inventory">Inventory</a>
+            <a class="nav-link" href="/tinkerers-lab/inventory">Inventory</a>
           </li>
           <!-- <li class="nav-item">
-            <a class="nav-link" href="/about">About Us</a>
+            <a class="nav-link" href="/invet">About Us</a>
           </li> -->
           <li class="nav-item">
-            <a class="nav-link" href="/contact">Contact</a>
+            <a class="nav-link" href="/tinkerers-lab/contact">Contact</a>
           </li>
         </ul>
       </div>
@@ -480,7 +480,7 @@
       <div class="col-sm-12 col-md-4 text-center">
         <i class="fas fa-map-marker-alt footer-icon"></i>
         <br><br>
-        <p>Academic Block 4 / 111, IIT Gandhinagar, Palaj</p>
+        <p>Academic Block 11 / 217, IIT Gandhinagar, Palaj</p>
         <p>Gandhinagar - 382355, Gujarat</p>
         <br>
       </div>
@@ -490,15 +490,13 @@
         <p class="text-center">TL Coordinators</p>
         <div class="row coordinator-row">
           <div class="col-sm-12 col-md-6">
-            <p class="coordinator-name">Kritika Kumawat</p>
-            <p class="coordinator-phone">+91 93521 80309</p>
-            <p class="coordinator-email">kritika.k@iitgn.ac.in</p>
+            <p class="coordinator-name">Dhruv Dosi</p>
+            <p class="coordinator-email">dosidhruv@iitgn.ac.in</p>
             <br>
           </div>
           <div class="col-sm-12 col-md-6">
-            <p class="coordinator-name">Gaurav Viramgami</p>
-            <p class="coordinator-phone">+91 78746 26478</p>
-            <p class="coordinator-email">viramgami.g@iitgn.ac.in</p>
+            <p class="coordinator-name">Sridhar Singh Thakur</p>
+            <p class="coordinator-email">sridharsingh.thakur@iitgn.ac.in</p>
           </div>
         </div>
         <br>
@@ -526,7 +524,7 @@
         <a href="https://www.instagram.com/tinkerers_lab_iitgn/"><i class="fab fa-instagram footer-icon social-icon"></i></a>
       </div>
       <div class="col-sm-12 col-md-6 text-center">
-        <a class="btn btn-outline-light contact-btn" href="/contact" role="button">Get In Touch &rarr;</a>
+        <a class="btn btn-outline-light contact-btn" href="/inve" role="button">Get In Touch &rarr;</a>
       </div>
     </div> -->
     <p class="text-center">Copyright ©2021 All rights reserved | Tinkerers’ Lab IIT Gandhinagar</p>
@@ -698,7 +696,7 @@
       var minute = hour_minute.split(":")[1];
       var seconds = "00";
 
-      return day + "/" + month + "/" + year + " " + hour + ":" + minute + ":" + seconds;
+      return day + " + month + " + year + " " + hour + ":" + minute + ":" + seconds;
     }
 
     function getDateStringToSend (time) {
@@ -707,7 +705,7 @@
       var month = list[1];
       var day = list[2];
 
-      return day + "/" + month + "/" + year;
+      return day + " + month + " + year;
     }
 
     let currentTime = new Date(Date.now());
