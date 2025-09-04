@@ -94,7 +94,7 @@
               <h5 class="card-title text-center">Mehta Laser Cutter</h5>
               <div class="details text-center">
                 <p class="available" id="MehtaLaser"></p>
-                <a class="btn btn-outline-light sign-in-btn" id="MehtaLaser-btn" href="/tinkerers-lab/mehtaLaser-form" role="button">Book Now</a>
+                <a class="btn btn-outline-light sign-in-btn" id="MehtaLaser-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeLRy3iH5GQAcRArQl0t1lIPQy5GM-tEjaraiy3fcA1DP4NNQ/viewform" target="_blank" role="button">Book Now</a>
                 <a class="btn btn-outline-light sign-in-btn" id="MehtaLaser-calendar-btn" href="/tinkerers-lab/mehtaLaser-calendar" role="button">See Calendar</a>
               </div>
             </div>
@@ -107,7 +107,7 @@
               <h5 class="card-title text-center">GCC Laser Cutter</h5>
               <div class="details text-center">
                 <p class="available" id="GCCLaser"></p>
-                <a class="btn btn-outline-light sign-in-btn" id="GCCLaser-btn" href="/tinkerers-lab/gccLaser-form" role="button">Book Now</a>
+                <a class="btn btn-outline-light sign-in-btn" id="GCCLaser-btn" href="https://forms.google.com/YOUR_GCC_LASER_FORM_ID" target="_blank" role="button">Book Now</a>
                 <a class="btn btn-outline-light sign-in-btn" id="GCCLaser-calendar-btn" href="/tinkerers-lab/gccLaser-calendar" role="button">See Calendar</a>
               </div>
             </div>
@@ -129,7 +129,7 @@
               <h5 class="card-title text-center">3D Printer</h5>
               <div class="details text-center">
                 <p class="available" id="3DPrinter"></p>
-                <a class="btn btn-outline-light sign-in-btn" id="3DPrinter-btn" href="/tinkerers-lab/3dprinter-form" role="button">Book Now</a>
+                <a class="btn btn-outline-light sign-in-btn" id="3DPrinter-btn" href="https://forms.google.com/YOUR_3D_PRINTER_FORM_ID" target="_blank" role="button">Book Now</a>
                 <a class="btn btn-outline-light sign-in-btn" id="3DPrinter-calendar-btn" href="/tinkerers-lab/3dprinter-calendar" role="button">See Calendar</a>
               </div>
             </div>
@@ -185,7 +185,7 @@
               <h5 class="card-title text-center">Roland Vinyl Cutter</h5>
               <div class="details text-center">
                 <p class="available" id="Vinyl"></p>
-                <a class="btn btn-outline-light sign-in-btn" id="Vinyl-btn" href="/tinkerers-lab/rolandVinylCutter-form" role="button">Book Now</a>
+                <a class="btn btn-outline-light sign-in-btn" id="Vinyl-btn" href="https://forms.google.com/YOUR_VINYL_CUTTER_FORM_ID" target="_blank" role="button">Book Now</a>
                 <a class="btn btn-outline-light sign-in-btn" id="Vinyl-calendar-btn" href="/tinkerers-lab/rolandVinylCutter-calendar" role="button">See Calendar</a>
               </div>
             </div>
@@ -272,10 +272,13 @@
       console.log(data);
       var list = data.split(",");
       map = {
-        "GCCLaser": list[0],
+        "GCCLaser": "No", // Hard coded to No
+        // "GCCLaser": list[0],
         "MehtaLaser": list[1],  
-        "Vinyl": list[2],
-        "3DPrinter": list[3],
+        "Vinyl": "No",
+        // "Vinyl": list[2],
+        "3DPrinter": "No",
+        // "3DPrinter": list[3],
         // "UM3+": list[4],
         // "MakerGear": list[5]
       };
