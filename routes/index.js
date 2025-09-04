@@ -38,7 +38,10 @@ router.post('/login', (req,res)=>{
           res.cookie('session-token', token);
           res.send('success')
       })
-      .catch(console.error);
+      .catch(err=>{
+          console.error('Login verification failed:', err);
+          res.status(401).send('error');
+      });
 })
 
 router.get('/logout', (req, res)=>{
@@ -46,36 +49,35 @@ router.get('/logout', (req, res)=>{
     res.redirect('/tinkerers-lab/booking')
 })
 
-router.get("/booking", function (req, res) {
-  // Pass default variables for the booking view.
-  res.render("booking", { loggedIn: false, email: "-" });
+// router.get("/booking", function (req, res) {
+//   res.render("booking");
+// })
+
+router.get("/booking", checkAuthenticatedOptional, function (req, res) {
+  if (req.user) {
+    // console.log(req.user);
+    // console.log("Logged in");
+    // console.log(req.user.emails[0].value);
+    res.render("booking", {loggedIn: true, email: req.user.email});
+    // res.render("booking", {loggedIn: false});
+  } else {
+    // console.log("Not logged in");
+    res.render("booking", {loggedIn: false});
+  }
+  // res.render("booking");
 })
 
-// router.get("/booking", checkAuthenticated, function (req, res) {
-//   if (req.user) {
-//     // console.log(req.user);
-//     // console.log("Logged in");
-//     // console.log(req.user.emails[0].value);
-//     res.render("booking", {loggedIn: true, email: req.user.email});
-//     // res.render("booking", {loggedIn: false});
-//   } else {
-//     // console.log("Not logged in");
-//     res.render("booking", {loggedIn: false});
-//   }
-//   // res.render("booking");
-// })
-
-// router.get("/booking-login", function (req, res) {
-//   // if (req.user) {
-//   //   // console.log("Logged in");
-//   //   // console.log(req.user.emails[0].value);
-//   //   res.render("booking", {loggedIn: true, email: req.user.emails[0].value});
-//   // } else {
-//     // console.log("Not logged in");
-//     res.render("booking", {loggedIn: false});
-//   // }
-//   // res.render("booking");
-// })
+router.get("/booking-login", function (req, res) {
+  // if (req.user) {
+  //   // console.log("Logged in");
+  //   // console.log(req.user.emails[0].value);
+  //   res.render("booking", {loggedIn: true, email: req.user.emails[0].value});
+  // } else {
+    // console.log("Not logged in");
+    res.render("booking", {loggedIn: false});
+  // }
+  // res.render("booking");
+})
 
 router.get("/mehtaLaser-form", checkAuthenticated, function (req, res) {
   if (req.user) {
@@ -121,12 +123,36 @@ router.get("/rolandVinylCutter-form", checkAuthenticated, function (req, res) {
   }
 })
 
-router.get("/mehtaLaser-calendar", function (req, res) {
-    res.render("calendars/mehtaLaser_calendar");
+router.get("/mehtaLaser-calendar", checkAuthenticatedOptional, function (req, res) {
+  if (req.user) {
+    res.render("calendars/mehtaLaser_calendar", {loggedIn: true, email: req.user.email});
+  } else {
+    res.render("calendars/mehtaLaser_calendar", {loggedIn: false});
+  }
 })
 
-router.get("/3dprinter-calendar", function (req, res) {
-  res.render("calendars/3dprinter_calendar");
+router.get("/gccLaser-calendar", checkAuthenticatedOptional, function (req, res) {
+  if (req.user) {
+    res.render("calendars/gccLaser_calendar", {loggedIn: true, email: req.user.email});
+  } else {
+    res.render("calendars/gccLaser_calendar", {loggedIn: false});
+  }
+})
+
+router.get("/3dprinter-calendar", checkAuthenticatedOptional, function (req, res) {
+  if (req.user) {
+    res.render("calendars/3dprinter_calendar", {loggedIn: true, email: req.user.email});
+  } else {
+    res.render("calendars/3dprinter_calendar", {loggedIn: false});
+  }
+})
+
+router.get("/rolandVinylCutter-calendar", checkAuthenticatedOptional, function (req, res) {
+  if (req.user) {
+    res.render("calendars/rolandVinylCutter_calendar", {loggedIn: true, email: req.user.email});
+  } else {
+    res.render("calendars/rolandVinylCutter_calendar", {loggedIn: false});
+  }
 })
 
 
@@ -253,6 +279,30 @@ router.get("/contact", function (req, res) {
 // })
 
 
+
+function checkAuthenticatedOptional(req, res, next){
+    let token = req.cookies['session-token'];
+    let user = {};
+    async function verify() {
+        const ticket = await client.verifyIdToken({
+            idToken: token,
+            audience: CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
+        });
+        const payload = ticket.getPayload();
+        user.name = payload.name;
+        user.email = payload.email;
+        user.picture = payload.picture;
+      }
+      verify()
+      .then(()=>{
+          req.user = user;
+          next();
+      })
+      .catch(err=>{
+          req.user = null;
+          next();
+      })
+}
 
 function checkAuthenticated(req, res, next){
     let token = req.cookies['session-token'];
