@@ -31,11 +31,28 @@ router.post('/login', (req,res)=>{
             audience: CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
         });
         const payload = ticket.getPayload();
-        const userid = payload['sub'];
+        return {
+            userid: payload['sub'],
+            name: payload.name,
+            email: payload.email,
+            picture: payload.picture
+        };
       }
       verify()
-      .then(()=>{
-          res.cookie('session-token', token);
+      .then((userInfo)=>{
+          // Store user info in session instead of just cookie
+          req.session.user = userInfo;
+          req.session.token = token;
+          req.session.isAuthenticated = true;
+          
+          // Also set cookie for backward compatibility
+          res.cookie('session-token', token, {
+              httpOnly: true,
+              secure: false,
+              sameSite: 'lax',
+              maxAge: 24 * 60 * 60 * 1000,
+              path: '/tinkerers-lab'
+          });
           res.send('success')
       })
       .catch(err=>{
@@ -45,8 +62,17 @@ router.post('/login', (req,res)=>{
 })
 
 router.get('/logout', (req, res)=>{
-    res.clearCookie('session-token');
-    res.redirect('/tinkerers-lab/booking')
+    // Destroy the session
+    req.session.destroy((err) => {
+        if (err) {
+            console.error('Session destruction error:', err);
+        }
+        // Clear the cookie
+        res.clearCookie('session-token', {
+            path: '/tinkerers-lab'
+        });
+        res.redirect('/tinkerers-lab/booking')
+    });
 })
 
 // router.get("/booking", function (req, res) {
@@ -281,12 +307,24 @@ router.get("/contact", function (req, res) {
 
 
 function checkAuthenticatedOptional(req, res, next){
+    // First check session
+    if (req.session && req.session.isAuthenticated && req.session.user) {
+        req.user = req.session.user;
+        return next();
+    }
+    
+    // Fall back to cookie-based authentication
     let token = req.cookies['session-token'];
+    if (!token) {
+        req.user = null;
+        return next();
+    }
+    
     let user = {};
     async function verify() {
         const ticket = await client.verifyIdToken({
             idToken: token,
-            audience: CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
+            audience: CLIENT_ID,
         });
         const payload = ticket.getPayload();
         user.name = payload.name;
@@ -305,12 +343,23 @@ function checkAuthenticatedOptional(req, res, next){
 }
 
 function checkAuthenticated(req, res, next){
+    // First check session
+    if (req.session && req.session.isAuthenticated && req.session.user) {
+        req.user = req.session.user;
+        return next();
+    }
+    
+    // Fall back to cookie-based authentication
     let token = req.cookies['session-token'];
+    if (!token) {
+        return res.redirect('/tinkerers-lab/booking-login');
+    }
+    
     let user = {};
     async function verify() {
         const ticket = await client.verifyIdToken({
             idToken: token,
-            audience: CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
+            audience: CLIENT_ID,
         });
         const payload = ticket.getPayload();
         user.name = payload.name;
@@ -328,14 +377,23 @@ function checkAuthenticated(req, res, next){
 }
 
 function checkAuthenticatedInventory(req, res, next){
-
+  // First check session
+  if (req.session && req.session.isAuthenticated && req.session.user) {
+      req.user = req.session.user;
+      return next();
+  }
+  
+  // Fall back to cookie-based authentication
   let token = req.cookies['session-token'];
-
+  if (!token) {
+      return res.redirect('/tinkerers-lab/inventory-login');
+  }
+  
   let user = {};
   async function verify() {
       const ticket = await client.verifyIdToken({
           idToken: token,
-          audience: CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
+          audience: CLIENT_ID,
       });
       const payload = ticket.getPayload();
       user.name = payload.name;
@@ -350,7 +408,6 @@ function checkAuthenticatedInventory(req, res, next){
     .catch(err=>{
         res.redirect('/tinkerers-lab/inventory-login')
     })
-
 }
 
 module.exports = router

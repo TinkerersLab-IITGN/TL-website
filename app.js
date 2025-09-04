@@ -12,7 +12,9 @@ var express = require("express"),
 
   methodOverride = require("method-override"),
 
-  bodyParser = require("body-parser");
+  bodyParser = require("body-parser"),
+
+  session = require('express-session');
 
 const cookieParser = require('cookie-parser');
 
@@ -49,6 +51,19 @@ const cookieParser = require('cookie-parser');
 app.use(express.json());
 
 app.use(cookieParser());
+
+// Configure session middleware
+app.use(session({
+  secret: 'your-secret-key-change-this-in-production', // Change this to a secure random string
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: false, // Set to true in production with HTTPS
+    httpOnly: true,
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    sameSite: 'lax'
+  }
+}));
 
 app.set("view engine", "ejs")
 
