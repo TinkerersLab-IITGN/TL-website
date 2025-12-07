@@ -9,7 +9,6 @@
   <meta name="author" content="Gaurav Viramgami | Kritika Kumawat">
   <meta name="description" value="Tinkerers' Lab is a platform for students to experience innovation and prepare themselves for the future through self-learning.">
   <link rel="icon" href="/tinkerers-lab/public/images/favicon.png">
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
 
   <!--Bootstrap-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -80,28 +79,6 @@
       Booking Portal
     </div>
 
-    <!-- Sign In -->
-    <% if (!loggedIn) { %>
-    <div class="sign-in text-center">
-      <p class="sign-in-text">Please sign in to book machines</p>
-      <!-- <a class="btn btn-outline-light sign-in-btn g-signin2" data-onsuccess="onSignIn">Sign In with Google Account</a> -->
-      <div id="g_id_signin" style="display: inline-block;"></div>
-    </div>
-    <% } else { %>
-    <div class="sign-in text-center">
-      <p class="sign-in-text">You are signed in as: <%= email %></p>
-      <div class="row sign-in-row">
-        <div class="col-sm-12 col-md-6 sign-in-text">
-          Sign in with another Email: <div id="g_id_signin_alt" style="display: inline-block;"></div>
-        </div>
-        <div class="col-sm-12 col-md-6">
-          <a class="btn btn-outline-light sign-in-btn" href="javascript:logout()">Logout</a>
-        </div>
-      </div>
-      <!-- <a class="btn btn-outline-light sign-in-btn" onclick="triggerGoogleSignIn()" role="button"><i class="fas fa-lock"></i> Sign In</a> -->
-    </div>
-    <% } %>
-
     <!-- Machines -->
 
     <!-- Laser Cutter -->
@@ -116,14 +93,9 @@
             <div class="card-body">
               <h5 class="card-title text-center">Mehta Laser Cutter</h5>
               <div class="details text-center">
-                <% if (!loggedIn) { %>
-                <!-- <a class="btn btn-outline-light sign-in-btn" href="/google" role="button"><i class="fas fa-lock"></i> Sign In</a> -->
-                <a class="btn btn-outline-light sign-in-btn" onclick="triggerGoogleSignIn()" role="button"><i class="fas fa-lock"></i> Sign In</a>
-                <% } else { %>
                 <p class="available" id="MehtaLaser"></p>
-                <a class="btn btn-outline-light sign-in-btn" id="MehtaLaser-btn" href="/tinkerers-lab/mehtaLaser-form" role="button">Book Now</a>
+                <a class="btn btn-outline-light sign-in-btn" id="MehtaLaser-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeLRy3iH5GQAcRArQl0t1lIPQy5GM-tEjaraiy3fcA1DP4NNQ/viewform" target="_blank" role="button">Book Now</a>
                 <a class="btn btn-outline-light sign-in-btn" id="MehtaLaser-calendar-btn" href="/tinkerers-lab/mehtaLaser-calendar" role="button">See Calendar</a>
-                <% } %>
               </div>
             </div>
           </div>
@@ -134,14 +106,9 @@
             <div class="card-body">
               <h5 class="card-title text-center">GCC Laser Cutter</h5>
               <div class="details text-center">
-                <% if (!loggedIn) { %>
-                <!-- <a class="btn btn-outline-light sign-in-btn" href="/google" role="button"><i class="fas fa-lock"></i> Sign In</a> -->
-                <a class="btn btn-outline-light sign-in-btn" onclick="triggerGoogleSignIn()" role="button"><i class="fas fa-lock"></i> Sign In</a>
-                <% } else { %>
                 <p class="available" id="GCCLaser"></p>
-                <a class="btn btn-outline-light sign-in-btn" id="GCCLaser-btn" href="/tinkerers-lab/gccLaser-form" role="button">Book Now</a>
+                <a class="btn btn-outline-light sign-in-btn" id="GCCLaser-btn" href="https://forms.google.com/YOUR_GCC_LASER_FORM_ID" target="_blank" role="button">Book Now</a>
                 <a class="btn btn-outline-light sign-in-btn" id="GCCLaser-calendar-btn" href="/tinkerers-lab/gccLaser-calendar" role="button">See Calendar</a>
-                <% } %>
               </div>
             </div>
           </div>
@@ -161,14 +128,9 @@
             <div class="card-body">
               <h5 class="card-title text-center">3D Printer</h5>
               <div class="details text-center">
-                <% if (!loggedIn) { %>
-                <!-- <a class="btn btn-outline-light sign-in-btn" href="/google" role="button"><i class="fas fa-lock"></i> Sign In</a> -->
-                <a class="btn btn-outline-light sign-in-btn" onclick="triggerGoogleSignIn()" role="button"><i class="fas fa-lock"></i> Sign In</a>
-                <% } else { %>
                 <p class="available" id="3DPrinter"></p>
-                <a class="btn btn-outline-light sign-in-btn" id="3DPrinter-btn" href="/tinkerers-lab/3dprinter-form" role="button">Book Now</a>
+                <a class="btn btn-outline-light sign-in-btn" id="3DPrinter-btn" href="https://forms.google.com/YOUR_3D_PRINTER_FORM_ID" target="_blank" role="button">Book Now</a>
                 <a class="btn btn-outline-light sign-in-btn" id="3DPrinter-calendar-btn" href="/tinkerers-lab/3dprinter-calendar" role="button">See Calendar</a>
-                <% } %>
               </div>
             </div>
           </div>
@@ -222,14 +184,9 @@
             <div class="card-body">
               <h5 class="card-title text-center">Roland Vinyl Cutter</h5>
               <div class="details text-center">
-                <% if (!loggedIn) { %>
-                <!-- <a class="btn btn-outline-light sign-in-btn" href="/google" role="button"><i class="fas fa-lock"></i> Sign In</a> -->
-                <a class="btn btn-outline-light sign-in-btn" onclick="triggerGoogleSignIn()" role="button"><i class="fas fa-lock"></i> Sign In</a>
-                <% } else { %>
                 <p class="available" id="Vinyl"></p>
-                <a class="btn btn-outline-light sign-in-btn" id="Vinyl-btn" href="/tinkerers-lab/rolandVinylCutter-form" role="button">Book Now</a>
+                <a class="btn btn-outline-light sign-in-btn" id="Vinyl-btn" href="https://forms.google.com/YOUR_VINYL_CUTTER_FORM_ID" target="_blank" role="button">Book Now</a>
                 <a class="btn btn-outline-light sign-in-btn" id="Vinyl-calendar-btn" href="/tinkerers-lab/rolandVinylCutter-calendar" role="button">See Calendar</a>
-                <% } %>
               </div>
             </div>
           </div>
@@ -259,13 +216,13 @@
           <div class="col-sm-12 col-md-6">
             <p class="coordinator-name">Dhruv Goel</p>
             <p class="coordinator-email">23110098@iitgn.ac.in</p>
-            <p class="coordinator-phone">+91 7678420311</p>
+            <p class="coordinator-phone">+91 76784 20311</p>
             <br>
           </div>
           <div class="col-sm-12 col-md-6">
             <p class="coordinator-name">Siddhesh Umarjee</p>
             <p class="coordinator-email">siddhesh.umarjee@iitgn.ac.in</p>
-            <p class="coordinator-phone">+91 7447454514</p>
+            <p class="coordinator-phone">+91 74474 54514</p>
           </div>
         </div>
         <br>
@@ -304,98 +261,49 @@
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <!-- <script src="/tinkerers-lab/public/css/booking.js" charset="utf-8"></script> -->
   <script type="text/javascript">
-    // Initialize Google Identity Services
-    window.onload = function() {
-      google.accounts.id.initialize({
-        client_id: '229423012134-u4dv6s53mpllopu3ig79o4njqr4cr2nl.apps.googleusercontent.com',
-        callback: handleCredentialResponse
-      });
-      
-      // Render the sign-in buttons only where needed
-      if ("<%= loggedIn %>" !== "true") {
-        google.accounts.id.renderButton(
-          document.getElementById("g_id_signin"),
-          { theme: "outline", size: "large" }
-        );
-        
-        var altSignin = document.getElementById("g_id_signin_alt");
-        if (altSignin) {
-          google.accounts.id.renderButton(altSignin, { theme: "outline", size: "large" });
-        }
-      }
-    };
-
-    function triggerGoogleSignIn() {
-      google.accounts.id.prompt();
-    }
-
-    function handleCredentialResponse(response) {
-      console.log('Starting sign in process...');
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', '/tinkerers-lab/login');
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.send(JSON.stringify({token : response.credential}));
-      xhr.onload = function() {
-          console.log('Server response: ' + xhr.responseText);
-          if(xhr.responseText == 'success'){
-              console.log('Login successful, reloading page...');
-              window.location.reload();
-          } else {
-              console.log('Login failed');
-          }
-      };
-      xhr.onerror = function() {
-          console.log('Network error during login');
-      };
-    }
-    
-    function logout() {
-      google.accounts.id.disableAutoSelect();
-      window.location.href = '/tinkerers-lab/logout';
-    }
-    
     var map;
-    if ("<%= loggedIn %>" === "true") {
-    // if (loggedIn) {
-      document.getElementById("loading").style.display = "block";
-      document.getElementById("main").style.display = "none";
-      var jqxhr = $.ajax({
-        url: 'https://script.google.com/macros/s/AKfycby0NxjFPg6nvA9W_l0T4JttQmAEOoGWaj6Cq95yy7Z7dBNoYHukteZFXg/exec',
-        method: "GET",
-        dataType: "json"
-      }).then(function(doRef) {
-        var data = doRef["data"];
-        console.log(data);
-        var list = data.split(",");
-        map = {
-          "GCCLaser": list[0],
-          "MehtaLaser": list[1],
-          "Vinyl": list[2],
-          "3DPrinter": list[3],
-          // "UM3+": list[4],
-          // "MakerGear": list[5]
-        };
+    // Always load the machine availability since we removed auth
+    document.getElementById("loading").style.display = "block";
+    document.getElementById("main").style.display = "none";
+    var jqxhr = $.ajax({
+      url: 'https://script.google.com/macros/s/AKfycby0NxjFPg6nvA9W_l0T4JttQmAEOoGWaj6Cq95yy7Z7dBNoYHukteZFXg/exec',
+      method: "GET",
+      dataType: "json"
+    }).then(function(doRef) {
+      var data = doRef["data"];
+      console.log(data);
+      var list = data.split(",");
+      map = {
+        "GCCLaser": "No", // Hard coded to No
+        // "GCCLaser": list[0],
+        "MehtaLaser": list[1],  
+        "Vinyl": "No",
+        // "Vinyl": list[2],
+        "3DPrinter": "No",
+        // "3DPrinter": list[3],
+        // "UM3+": list[4],
+        // "MakerGear": list[5]
+      };
 
-        Object.keys(map).forEach(function(key) {
-          document.getElementById(key).innerHTML = "Available: " + map[key];
+      Object.keys(map).forEach(function(key) {
+        document.getElementById(key).innerHTML = "Available: " + map[key];
 
-          if (map[key] === "Yes") {
-            document.getElementById(key + "-btn").style.display = "block";
-            document.getElementById(key + "-calendar-btn").style.display = "block";
-          } else {
-            document.getElementById(key + "-btn").style.display = "none";
-            document.getElementById(key + "-calendar-btn").style.display = "none";
-          }
-        });
-
-        document.getElementById("loading").style.display = "none";
-        document.getElementById("main").style.display = "block";
+        if (map[key] === "Yes") {
+          document.getElementById(key + "-btn").style.display = "block";
+          document.getElementById(key + "-calendar-btn").style.display = "block";
+        } else {
+          document.getElementById(key + "-btn").style.display = "none";
+          document.getElementById(key + "-calendar-btn").style.display = "none";
+        }
       });
 
-    } else {
       document.getElementById("loading").style.display = "none";
       document.getElementById("main").style.display = "block";
-    }
+    }).catch(function() {
+      // If the AJAX fails, still show the page
+      document.getElementById("loading").style.display = "none";
+      document.getElementById("main").style.display = "block";
+    });
   </script>
 
 </body>
